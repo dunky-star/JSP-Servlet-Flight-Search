@@ -1,7 +1,7 @@
 # JSP-Servlet-Flight-Search
 Boot camp (Assignment for Phase-2): Become a back-end expert.
 
-Flyaway - Develop and implement a web app for:-
+Develop and implement a web app for FlyAway Flight Reservation Co., LTD to:-
 
 1.) Search form (From, To, Date, Type)
 2.) Display them a error page. // If the from to data is incorrect
@@ -12,5 +12,6 @@ Flyaway - Develop and implement a web app for:-
 7.) Display the Ticket Booking Successful page with the Unique Ticket Number, passenger details, flight details etc.
 
 DB Tables - 
+
 	Flight(From, to, Date, time, Flight Number(ID), seats)
 	Passenger(First name, last name, age, gender, Flight Number)
