@@ -30,7 +30,7 @@ DML:
 *****
 
 INSERT INTO Flight (flightNumber, `from`, `to`, seat, flight_time, `date`) VALUES (10,'DXB','EBB','20J','09:45:00','2022-12-31');
-INSERT INTO Flight (flightNumber, `from`, `to`, seat, flight_time, `date`) VALUES (11,'CHI','JOBURG','11kK','00:50:00','2023-01-01');
+INSERT INTO Flight (flightNumber, `from`, `to`, seat, flight_time, `date`) VALUES (11,'CHI','JOBURG','11K','00:50:00','2023-01-01');
 INSERT INTO Flight (flightNumber, `from`, `to`, seat, flight_time, `date`) VALUES (12,'EBB','DXB','38D','16:45:00','2022-11-05');
   
   
