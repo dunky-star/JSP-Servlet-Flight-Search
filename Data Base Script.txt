@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS Passenger;
 
 CREATE TABLE Flight (
   flightNumber int(10) NOT NULL AUTO_INCREMENT, 
-  `from`       int(10), 
+  `from`       varchar(50), 
   `to`         varchar(50), 
   seat         varchar(10) UNIQUE, 
   flight_time  timestamp NULL, 
@@ -37,12 +37,13 @@ INSERT INTO Flight
   flight_time, 
   `date`) 
 VALUES 
-  (?, 
-  ?, 
-  ?, 
-  ?, 
-  ?, 
-  ?);
+  (10, 
+  'DXB', 
+  'EBB', 
+  '20J', 
+  '11-10-2022 09:45:00',
+  11-10-2022  
+  );
   
   
 INSERT INTO Passenger
