@@ -1,38 +1,41 @@
-ALTER TABLE passenger DROP FOREIGN KEY FKPassenger454095;
-DROP TABLE IF EXISTS flight;
-DROP TABLE IF EXISTS passenger;
+DDL:
+*****
+ALTER TABLE Passenger DROP FOREIGN KEY FKPassenger320613;
+DROP TABLE IF EXISTS Flight;
+DROP TABLE IF EXISTS Passenger;
 
 
-CREATE TABLE flight (
+CREATE TABLE Flight (
   flightNumber int(10) NOT NULL AUTO_INCREMENT, 
   `from`       int(10), 
   `to`         varchar(50), 
   seat         varchar(10) UNIQUE, 
-  time         time, 
-  `date`       date, 
-  PRIMARY KEY (FlightNumber)) type=InnoDB;
-CREATE TABLE passenger (
+  flight_time  timestamp NULL, 
+  `date`       datetime NULL, 
+  PRIMARY KEY (flightNumber));
+  
+
+CREATE TABLE Passenger (
   flightFlightNumber int(10) NOT NULL, 
   first_Name         varchar(50), 
   last_Name          varchar(50), 
   age                int(10), 
-  gender             char(6)) type=InnoDB;
-ALTER TABLE passenger ADD INDEX FKPassenger454095 (FlightFlightNumber), ADD CONSTRAINT FKPassenger454095 FOREIGN KEY (FlightFlightNumber) REFERENCES Flight (FlightNumber);
+  gender             char(6));
+  
+ALTER TABLE Passenger ADD INDEX FKPassenger320613 (flightFlightNumber), ADD CONSTRAINT FKPassenger320613 FOREIGN KEY (flightFlightNumber) REFERENCES Flight (flightNumber) ON DELETE CASCADE ON UPDATE CASCADE;
 
   
-  
-  
-SELECT FlightNumber, `From`, `To`, Seat, Time, `Date` 
-  FROM Flight;
-  
+
+DML:
+*****
 
 INSERT INTO Flight
-  (FlightNumber, 
-  `From`, 
-  `To`, 
-  Seat, 
-  Time, 
-  `Date`) 
+  (flightNumber, 
+  `from`, 
+  `to`, 
+  seat, 
+  flight_time, 
+  `date`) 
 VALUES 
   (?, 
   ?, 
@@ -40,15 +43,18 @@ VALUES
   ?, 
   ?, 
   ?);
-
-
-UPDATE Flight SET 
-  `From` = ?, 
-  `To` = ?, 
-  Seat = ?, 
-  Time = ?, 
-  `Date` = ? 
-WHERE
-  FlightNumber = ?;
   
   
+INSERT INTO Passenger
+  (flightFlightNumber, 
+  first_Name, 
+  last_Name, 
+  age, 
+  gender) 
+VALUES 
+  (?, 
+  ?, 
+  ?, 
+  ?, 
+  ?);
+
