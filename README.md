@@ -13,5 +13,5 @@ Develop and implement a web app for FlyAway Flight Reservation Co., Ltd. to:-
 
 DB Tables: 
 
-	Flight(From, to, Date, time, Flight Number(ID), seats)
+	Flight(From, to, Date, time, Flight Number(ID), seats, Type)
 	Passenger(First name, last name, age, gender, Flight Number)
