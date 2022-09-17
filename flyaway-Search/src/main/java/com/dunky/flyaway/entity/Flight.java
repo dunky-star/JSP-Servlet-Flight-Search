@@ -1,4 +1,4 @@
-package com.dunky.flyaway.model;
+package com.dunky.flyaway.entity;
 
 import java.util.List;
 
