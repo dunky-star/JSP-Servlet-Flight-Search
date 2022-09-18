@@ -19,5 +19,19 @@ public class Passengers {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "passengerId")
     private int passengerId;
+	
+	private String firstName;
+	
+	private String lastName;
+	
+	private int age;
+	
+	private String gender;
+	
+	private int seatNumber;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "flight_number")
+    private Flight flight;
 
 }
