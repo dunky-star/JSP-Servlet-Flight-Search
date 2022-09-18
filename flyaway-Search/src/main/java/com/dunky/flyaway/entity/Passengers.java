@@ -114,8 +114,6 @@ public class Passengers {
 		this.flight = flight;
 	}
 	
-	
-	
-	
+		
 
 }
