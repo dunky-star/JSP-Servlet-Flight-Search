@@ -17,7 +17,7 @@ public class Passengers {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    @Column(name = "passengerId")
+    private int passengerId;
 
 }
