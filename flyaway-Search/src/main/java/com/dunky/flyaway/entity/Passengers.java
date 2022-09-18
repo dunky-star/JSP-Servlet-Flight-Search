@@ -38,5 +38,84 @@ public class Passengers {
 	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "flight_number")
     private Flight flight;
+	
+	
+	public Passengers() {
+
+    }
+
+
+	public int getPassengerId() {
+		return passengerId;
+	}
+
+
+	public void setPassengerId(int passengerId) {
+		this.passengerId = passengerId;
+	}
+
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+	public String getLastName() {
+		return lastName;
+	}
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+
+	public int getAge() {
+		return age;
+	}
+
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+
+	public String getGender() {
+		return gender;
+	}
+
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+
+	public int getSeatNumber() {
+		return seatNumber;
+	}
+
+
+	public void setSeatNumber(int seatNumber) {
+		this.seatNumber = seatNumber;
+	}
+
+
+	public Flight getFlight() {
+		return flight;
+	}
+
+
+	public void setFlight(Flight flight) {
+		this.flight = flight;
+	}
+	
+	
+	
+	
 
 }
