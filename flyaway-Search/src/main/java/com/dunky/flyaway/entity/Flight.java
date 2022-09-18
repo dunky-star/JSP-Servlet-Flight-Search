@@ -14,15 +14,117 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Flight")
-
 public class Flight {
 	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "flightNumber")
 	private int flightNumber;
+	
+	@Column(name = "from")
 	private String from;
+	
+	@Column(name = "to")
 	private String to;
+	
+	@Column(name = "seat")
 	private int seat;
+	
+	@Column(name = "flight_time")
 	private String flightTime;
+	
+	@Column(name = "flight_date")
 	private Date flightDate;
-	private String Type;
+	
+	@Column(name = "flight_type")
+	private String flightType;
+	
+	@OneToMany(mappedBy = "Flight", cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
+  	      CascadeType.REFRESH })
+	private List<Passengers> passengers;
+	
+	
+	// Constructors
+	public Flight() {
 
+    }
+
+	public Flight(String from, String to, int seat, String flightTime, Date flightDate, String flightType,
+			List<Passengers> passengers) {
+		
+		this.from = from;
+		this.to = to;
+		this.seat = seat;
+		this.flightTime = flightTime;
+		this.flightDate = flightDate;
+		this.flightType = flightType;
+		this.passengers = passengers;
+	}
+
+	// Getter, Setter
+	public int getFlightNumber() {
+		return flightNumber;
+	}
+
+	public void setFlightNumber(int flightNumber) {
+		this.flightNumber = flightNumber;
+	}
+
+	public String getFrom() {
+		return from;
+	}
+
+	public void setFrom(String from) {
+		this.from = from;
+	}
+
+	public String getTo() {
+		return to;
+	}
+
+	public void setTo(String to) {
+		this.to = to;
+	}
+
+	public int getSeat() {
+		return seat;
+	}
+
+	public void setSeat(int seat) {
+		this.seat = seat;
+	}
+
+	public String getFlightTime() {
+		return flightTime;
+	}
+
+	public void setFlightTime(String flightTime) {
+		this.flightTime = flightTime;
+	}
+
+	public Date getFlightDate() {
+		return flightDate;
+	}
+
+	public void setFlightDate(Date flightDate) {
+		this.flightDate = flightDate;
+	}
+
+	public String getFlightType() {
+		return flightType;
+	}
+
+	public void setFlightType(String flightType) {
+		this.flightType = flightType;
+	}
+
+	public List<Passengers> getPassengers() {
+		return passengers;
+	}
+
+	public void setPassengers(List<Passengers> passengers) {
+		this.passengers = passengers;
+	}
+	
+	
 }
