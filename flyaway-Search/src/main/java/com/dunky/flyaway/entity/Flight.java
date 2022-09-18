@@ -1,5 +1,6 @@
 package com.dunky.flyaway.entity;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -21,7 +22,7 @@ public class Flight {
 	private String to;
 	private int seat;
 	private String flightTime;
-	private String flightDate;
+	private Date flightDate;
 	private String Type;
 
 }
