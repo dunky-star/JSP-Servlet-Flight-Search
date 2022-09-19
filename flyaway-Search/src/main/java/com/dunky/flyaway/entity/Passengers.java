@@ -40,11 +40,22 @@ public class Passengers {
     private Flight flight;
 	
 	
+	// Constructors
 	public Passengers() {
 
     }
+	
+	public Passengers(String firstName, String lastName, int age, String gender, int seatNumber, Flight flight) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+		this.gender = gender;
+		this.seatNumber = seatNumber;
+		this.flight = flight;
+	}
 
 
+	// Getters and Setters
 	public int getPassengerId() {
 		return passengerId;
 	}
@@ -113,7 +124,13 @@ public class Passengers {
 	public void setFlight(Flight flight) {
 		this.flight = flight;
 	}
-	
-		
 
+
+	@Override
+	public String toString() {
+		return "Passengers [passengerId=" + passengerId + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", age=" + age + ", gender=" + gender + ", seatNumber=" + seatNumber + ", flight=" + flight + "]";
+	}
+	
+	
 }
