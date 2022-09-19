@@ -49,15 +49,13 @@ public class Flight {
 
     }
 
-	public Flight(String from, String to, int seat, String flightTime, String flightDate, String flightType,
-			List<Passengers> passengers) {
+	public Flight(String from, String to, int seat, String flightTime, String flightDate, String flightType) {
 		this.from = from;
 		this.to = to;
 		this.seat = seat;
 		this.flightTime = flightTime;
 		this.flightDate = flightDate;
 		this.flightType = flightType;
-		this.passengers = passengers;
 	}
 
 	// Getter, Setter

@@ -33,7 +33,7 @@ public class Passengers {
 	private String gender;
 	
 	@Column(name = "seat_number")
-	private int seatNumber;
+	private String seatNumber;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "flight_number")
@@ -45,13 +45,12 @@ public class Passengers {
 
     }
 	
-	public Passengers(String firstName, String lastName, int age, String gender, int seatNumber, Flight flight) {
+	public Passengers(String firstName, String lastName, int age, String gender, String seatNumber) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
 		this.gender = gender;
 		this.seatNumber = seatNumber;
-		this.flight = flight;
 	}
 
 
@@ -106,12 +105,12 @@ public class Passengers {
 	}
 
 
-	public int getSeatNumber() {
+	public String getSeatNumber() {
 		return seatNumber;
 	}
 
 
-	public void setSeatNumber(int seatNumber) {
+	public void setSeatNumber(String seatNumber) {
 		this.seatNumber = seatNumber;
 	}
 
@@ -129,7 +128,7 @@ public class Passengers {
 	@Override
 	public String toString() {
 		return "Passengers [passengerId=" + passengerId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", age=" + age + ", gender=" + gender + ", seatNumber=" + seatNumber + ", flight=" + flight + "]";
+				+ ", age=" + age + ", gender=" + gender + ", seatNumber=" + seatNumber + "]";
 	}
 	
 	
