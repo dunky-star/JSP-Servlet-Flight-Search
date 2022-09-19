@@ -9,9 +9,9 @@ public class FlyAwayApp {
     public static void main(String[] args) {
 
         FlightDao flightDao = new FlightDao();
-        PassengersDao PassengersDao = PassengersDao();
+        PassengersDao passengersDao = new PassengersDao();
 
-        Flight flight1 = new Flight("Ebbs", "DXB", "yocare@yohunters.com");
+        Flight flight1 = new Flight("Ebbs", "DXB", 100, "16:45", "2022-12-09",  "Economy");
         flightDao.saveFlight(flight1);
 
         // create some courses

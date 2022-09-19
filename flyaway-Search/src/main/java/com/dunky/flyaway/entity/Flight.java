@@ -34,7 +34,7 @@ public class Flight {
 	private String flightTime;
 	
 	@Column(name = "flight_date")
-	private Date flightDate;
+	private String flightDate;
 	
 	@Column(name = "flight_type")
 	private String flightType;
@@ -49,9 +49,8 @@ public class Flight {
 
     }
 
-	public Flight(String from, String to, int seat, String flightTime, Date flightDate, String flightType,
+	public Flight(String from, String to, int seat, String flightTime, String flightDate, String flightType,
 			List<Passengers> passengers) {
-		
 		this.from = from;
 		this.to = to;
 		this.seat = seat;
@@ -102,11 +101,11 @@ public class Flight {
 		this.flightTime = flightTime;
 	}
 
-	public Date getFlightDate() {
+	public String getFlightDate() {
 		return flightDate;
 	}
 
-	public void setFlightDate(Date flightDate) {
+	public void setFlightDate(String flightDate) {
 		this.flightDate = flightDate;
 	}
 
