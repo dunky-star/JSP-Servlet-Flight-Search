@@ -1,45 +1,43 @@
 DDL:
 *****
-ALTER TABLE Passengers DROP FOREIGN KEY FKPassengers376440;
+ALTER TABLE Passengers DROP FOREIGN KEY FKPassengers347542;
 DROP TABLE IF EXISTS Flight;
 DROP TABLE IF EXISTS Passengers;
 
+
 CREATE TABLE Flight (
-  flightNumber int(10) NOT NULL AUTO_INCREMENT, 
-  `from`       varchar(50), 
-  `to`         varchar(50), 
-  seat         int(10), 
-  flight_time  time, 
-  `date`       date, 
-  Type         varchar(100), 
-  PRIMARY KEY (flightNumber));
-  
+  id          int(10) NOT NULL AUTO_INCREMENT, 
+  flight_from varchar(50), 
+  flight_to   varchar(50), 
+  seat        int(10), 
+  flight_time varchar(25), 
+  flight_date varchar(25), 
+  flight_type varchar(100), 
+  PRIMARY KEY (id)) type=InnoDB;
 CREATE TABLE Passengers (
-  flightFlightNumber       int(10) NOT NULL, 
-  first_Name               varchar(50), 
-  last_Name                varchar(50), 
-  age                      int(10), 
-  gender                   char(6), 
-  `seat_number    varchar` int(11) UNIQUE);
-ALTER TABLE Passengers ADD INDEX FKPassengers376440 (flightFlightNumber), ADD CONSTRAINT FKPassengers376440 FOREIGN KEY (flightFlightNumber) REFERENCES Flight (flightNumber) ON DELETE CASCADE ON UPDATE CASCADE;
+  flight_id   int(10) NOT NULL, 
+  id          int(11) NOT NULL AUTO_INCREMENT, 
+  first_Name  varchar(50), 
+  last_Name   varchar(50), 
+  age         int(10), 
+  gender      char(6), 
+  seat_number varchar(11) UNIQUE, 
+  PRIMARY KEY (id)) type=InnoDB;
+ALTER TABLE Passengers ADD INDEX FKPassengers347542 (flight_id), ADD CONSTRAINT FKPassengers347542 FOREIGN KEY (flight_id) REFERENCES Flight (id)
+ON DELETE CASCADE ON UPDATE CASCADE;
 
   
 
 DML:
 *****
-
-INSERT INTO Flight (flightNumber, `from`, `to`, seat, flight_time, `date`, type) VALUES (10,'DXB','EBB',200,'09:45:00','2022-12-31', 'International');
-INSERT INTO Flight (flightNumber, `from`, `to`, seat, flight_time, `date`, type) VALUES (11,'CHI','JOBURG',140,'00:50:00','2023-01-01', 'Domestic');
-INSERT INTO Flight (flightNumber, `from`, `to`, seat, flight_time, `date`, type) VALUES (12,'EBB','DXB',100,'16:45:00','2022-11-05', 'Domestic');
+INSERT INTO Flight
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+VALUES 
+  ( 'EBB', 'DXB', '200', '16:45', '2022-12-09', 'Economy');
   
-  
-INSERT INTO Passenger (flightFlightNumber, first_Name, last_Name, age, gender, seat_number) VALUES (10, 'Geoffrey', 'Kaligs', 30, 'Male', '10J');
-INSERT INTO Passenger (flightFlightNumber, first_Name, last_Name, age, gender, seat_number) VALUES (11, 'John', 'Doe', 50, 'Male', '20D');
-INSERT INTO Passenger (flightFlightNumber, first_Name, last_Name, age, gender, seat_number) VALUES (12, 'Sarah', 'Queen', 28, 'Female', '40K');
+INSERT INTO Passengers
+  (flight_id, first_Name, last_Name, age, gender, seat_number) 
+VALUES 
+  (2, 'Geo', 'Kaligs', 30, 'Male', '36D');
 
-
-SELECT flightNumber, `from`, `to`, seat, flight_time, `date`, Type 
-  FROM Flight;
-SELECT flightFlightNumber, first_Name, last_Name, age, gender, `seat_number    varchar` 
-  FROM Passengers;
 
