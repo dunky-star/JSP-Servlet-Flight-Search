@@ -34,10 +34,44 @@ INSERT INTO Flight
   ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
 VALUES 
   ( 'EBB', 'DXB', '200', '16:45', '2022-12-09', 'Economy');
+      
+  INSERT INTO Flight
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+VALUES 
+  ( 'DXB', 'EBB', '150', '09:45', '2023-05-10', 'Business');
+  
+  INSERT INTO Flight
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+VALUES 
+  ( 'DXB', 'Joburg', '210', '23:30', '2022-10-15', 'First Class');
+  
+   
+   INSERT INTO Flight
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+VALUES 
+  ( 'Banglore', 'Makal', '150', '00:30', '2022-11-15', 'First Class');
+  
+  
+    INSERT INTO Flight
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+VALUES 
+  ( 'Gulu', 'Hawaii', '210', '01:00', '2023-02-16', 'Business');
+  
+  
+  
+  
   
 INSERT INTO Passengers
   (flight_id, first_Name, last_Name, age, gender, seat_number) 
 VALUES 
   (2, 'Geo', 'Kaligs', 30, 'Male', '36D');
+  
+  INSERT INTO Passengers
+  (flight_id, first_Name, last_Name, age, gender, seat_number) 
+VALUES 
+  (2, 'Geo', 'Kaligs', 30, 'Male', '36D');
+  
+
+  
 
 

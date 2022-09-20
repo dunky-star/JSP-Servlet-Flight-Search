@@ -1,8 +1,5 @@
 package com.dunky.flyaway.entity;
-
-
 import java.security.SecureRandom;
-
 import javax.persistence.Embeddable;
 
 
