@@ -16,12 +16,15 @@ public class FlyAwayApp {
         flightDao.saveFlight(flight);
 
         // create some passenger
-        FlightTicket ticket1 = new FlightTicket("XXXXz123D");
+        FlightTicket ticket1 = new FlightTicket();
+        ticket1.getFlight_ticket();
+        
         Passengers passenger1 = new Passengers("Lar", "Arma", 10, "Female", "30J", ticket1);
         passenger1.setFlight(flight);
         passengersDao.savePassengers(passenger1);
 
-        FlightTicket ticket2 = new FlightTicket("XXXXz123k");
+        FlightTicket ticket2 = new FlightTicket();
+        ticket2.getFlight_ticket();
         Passengers passenger2 = new Passengers("Ayo", "Ted", 10, "Female", "40D", ticket2);
         passenger2.setFlight(flight);
         passengersDao.savePassengers(passenger2);

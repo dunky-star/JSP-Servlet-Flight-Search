@@ -1,30 +1,37 @@
 package com.dunky.flyaway.entity;
 
 
+import java.security.SecureRandom;
+
 import javax.persistence.Embeddable;
 
 
 @Embeddable
 public class FlightTicket {
 
-	private String randomTicket = "XXXX12Z";
+	static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	static SecureRandom rnd = new SecureRandom();
+
+	String randomString(int len){
+	   StringBuilder sb = new StringBuilder(len);
+	   for(int i = 0; i < len; i++)
+	      sb.append(AB.charAt(rnd.nextInt(AB.length())));
+	   return sb.toString();
+	}
+	
+	String flight_ticket = randomString(8);
 	
 	public FlightTicket() {
 	
 	}
 
-	public FlightTicket(String randomTicket) {
-		super();
-		this.randomTicket = randomTicket;
+	public String getFlight_ticket() {
+		return flight_ticket;
 	}
 
-	public String getRandomTicket() {
-		return randomTicket;
+	public void setFlight_ticket(String flight_ticket) {
+		this.flight_ticket = flight_ticket;
 	}
 
-	public void setRandomTicket(String randomTicket) {
-		this.randomTicket = randomTicket;
-	}
-	
-			
+				
 }
