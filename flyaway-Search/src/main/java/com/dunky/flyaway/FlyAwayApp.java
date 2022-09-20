@@ -28,5 +28,11 @@ public class FlyAwayApp {
         Passengers passenger2 = new Passengers("Ayo", "Ted", 10, "Female", "40D", ticket2);
         passenger2.setFlight(flight);
         passengersDao.savePassengers(passenger2);
+        
+        FlightTicket ticket3 = new FlightTicket();
+        ticket3.getFlight_ticket();
+        Passengers passenger3 = new Passengers("Anjana", "Nice", 23, "Male", "37K", ticket3);
+        passenger3.setFlight(flight);
+        passengersDao.savePassengers(passenger3);
     }
 }
