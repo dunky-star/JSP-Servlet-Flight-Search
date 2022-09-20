@@ -42,7 +42,7 @@ public class FlightDao {
         }
     }
 
-    public void deleteFlight(int flight_number) {
+    public void deleteFlight(int id) {
 
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -50,7 +50,7 @@ public class FlightDao {
             transaction = session.beginTransaction();
 
             // Delete a Flight object
-            Flight flight = session.get(Flight.class, flight_number);
+            Flight flight = session.get(Flight.class, id);
             if (flight != null) {
                 session.delete(flight);
                 System.out.println("flight is deleted");
@@ -66,7 +66,7 @@ public class FlightDao {
         }
     }
     
-    public Flight getFlight(int flight_number) {
+    public Flight getFlight(int id) {
 
         Transaction transaction = null;
         Flight flight = null;
@@ -74,7 +74,7 @@ public class FlightDao {
             // start a transaction
             transaction = session.beginTransaction();
             // get a flight object
-            flight = session.get(Flight.class, flight_number);
+            flight = session.get(Flight.class, id);
             // commit transaction
             transaction.commit();
         } catch (Exception e) {

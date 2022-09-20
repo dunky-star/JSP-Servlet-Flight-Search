@@ -42,7 +42,7 @@ public class PassengersDao {
         }
     }
 
-    public void deletepassengers(int passengerId) {
+    public void deletepassengers(int id) {
 
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -50,7 +50,7 @@ public class PassengersDao {
             transaction = session.beginTransaction();
 
             // Delete a passenger object
-            Passengers passenger = session.get(Passengers.class, passengerId);
+            Passengers passenger = session.get(Passengers.class, id);
             if (passenger != null) {
                 session.delete(passenger);
                 System.out.println("Passenger is deleted");
@@ -66,7 +66,7 @@ public class PassengersDao {
         }
     }
 
-    public Passengers getPassengers(int passengerId) {
+    public Passengers getPassengers(int id) {
 
         Transaction transaction = null;
         Passengers passenger = null;
@@ -74,7 +74,7 @@ public class PassengersDao {
             // start a transaction
             transaction = session.beginTransaction();
             // get a passenger object
-            passenger = session.get(Passengers.class, passengerId);
+            passenger = session.get(Passengers.class, id);
             // commit transaction
             transaction.commit();
         } catch (Exception e) {

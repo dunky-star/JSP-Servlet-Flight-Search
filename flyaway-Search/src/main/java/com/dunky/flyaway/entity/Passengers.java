@@ -12,13 +12,13 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "Passengers")
+@Table(name = "passengers")
 public class Passengers {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "passenger_id")
-    private int passengerId;
+    @Column(name = "id")
+    private int id;
 	
 	@Column(name = "first_name")
 	private String firstName;
@@ -36,7 +36,7 @@ public class Passengers {
 	private String seatNumber;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "flight_number")
+    @JoinColumn(name = "flight_id")
     private Flight flight;
 	
 	
@@ -55,13 +55,13 @@ public class Passengers {
 
 
 	// Getters and Setters
-	public int getPassengerId() {
-		return passengerId;
+	public int getId() {
+		return id;
 	}
 
 
-	public void setPassengerId(int passengerId) {
-		this.passengerId = passengerId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 
@@ -124,12 +124,11 @@ public class Passengers {
 		this.flight = flight;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Passengers [passengerId=" + passengerId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", age=" + age + ", gender=" + gender + ", seatNumber=" + seatNumber + "]";
+		return "Passengers [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age
+				+ ", gender=" + gender + ", seatNumber=" + seatNumber + "]";
 	}
-	
+
 	
 }

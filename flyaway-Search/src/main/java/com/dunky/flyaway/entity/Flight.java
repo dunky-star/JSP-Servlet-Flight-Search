@@ -1,6 +1,5 @@
 package com.dunky.flyaway.entity;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,18 +12,18 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Flight")
+@Table(name = "flight")
 public class Flight {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "flight_number")
-	private int flightNumber;
+	@Column(name = "id")
+	private int id;
 	
-	@Column(name = "from")
+	@Column(name = "flight_from")
 	private String from;
 	
-	@Column(name = "to")
+	@Column(name = "flight_to")
 	private String to;
 	
 	@Column(name = "seat")
@@ -39,7 +38,7 @@ public class Flight {
 	@Column(name = "flight_type")
 	private String flightType;
 	
-	@OneToMany(mappedBy = "Flight", cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
+	@OneToMany(mappedBy = "flight", cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
   	      CascadeType.REFRESH })
 	private List<Passengers> passengers;
 	
@@ -59,12 +58,12 @@ public class Flight {
 	}
 
 	// Getter, Setter
-	public int getFlightNumber() {
-		return flightNumber;
+	public int getId() {
+		return id;
 	}
 
-	public void setFlightNumber(int flightNumber) {
-		this.flightNumber = flightNumber;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getFrom() {
