@@ -2,6 +2,7 @@ package com.dunky.flyaway.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
-@Entity
+@Entity  // Using annotation-based metadata is same as "native" strategy in xml-based metadata. 
 @Table(name = "passengers")
 public class Passengers {
 	
@@ -32,8 +33,11 @@ public class Passengers {
 	@Column(name = "gender")
 	private String gender;
 	
-	@Column(name = "seat_number")
+	@Column(name = "seat_number", nullable=false)
 	private String seatNumber;
+	
+	@Embedded
+	private FlightTicket flightTicket;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "flight_id")
@@ -45,14 +49,23 @@ public class Passengers {
 
     }
 	
-	public Passengers(String firstName, String lastName, int age, String gender, String seatNumber) {
+	public Passengers(String firstName, String lastName, int age, String gender, String seatNumber, FlightTicket flightTicket) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
 		this.gender = gender;
 		this.seatNumber = seatNumber;
+		this.flightTicket = flightTicket;
 	}
 
+
+	public FlightTicket getFlightTicket() {
+		return flightTicket;
+	}
+
+	public void setFlightTicket(FlightTicket flightTicket) {
+		this.flightTicket = flightTicket;
+	}
 
 	// Getters and Setters
 	public int getId() {

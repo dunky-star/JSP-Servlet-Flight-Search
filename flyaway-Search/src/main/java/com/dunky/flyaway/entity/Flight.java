@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
+@Entity  // Using annotation-based metadata is same as "native" strategy in xml-based metadata. 
 @Table(name = "flight")
 public class Flight {
 	
