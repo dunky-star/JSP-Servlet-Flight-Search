@@ -16,7 +16,7 @@ public class FlyAwayApp {
         flightDao.saveFlight(flight);
         
         Flight flight1 = new Flight("EBB", "DXB", 100, "16:45", "2022-12-25",  "Business");
-        flightDao.saveFlight(flight);
+        flightDao.saveFlight(flight1);
 
         // create some passenger
         FlightTicket ticket1 = new FlightTicket();
