@@ -40,7 +40,7 @@ public class Passengers {
 	@Embedded
 	private FlightTicket flightTicket;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	@ManyToOne(cascade = {CascadeType.ALL}, fetch=FetchType.LAZY)
     @JoinColumn(name = "flight_id")
     private Flight flight;
 	
