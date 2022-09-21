@@ -9,14 +9,14 @@ public class FlightTicket {
 	static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	static SecureRandom rnd = new SecureRandom();
 
-	String randomString(int len){
+	private String randomString(int len){
 	   StringBuilder sb = new StringBuilder(len);
 	   for(int i = 0; i < len; i++)
 	      sb.append(AB.charAt(rnd.nextInt(AB.length())));
 	   return sb.toString();
 	}
 	
-	String flight_ticket = randomString(20);
+	private String flight_ticket = randomString(20);
 	
 	public FlightTicket() {
 	
