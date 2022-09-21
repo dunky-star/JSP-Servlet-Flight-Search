@@ -76,6 +76,8 @@ VALUES
  MySQL INNER JOIN:
 ******************
   SELECT * FROM flight INNER JOIN passengers ON flight.id = passengers.flight_id;
+  
+   SELECT * FROM flight LEFT OUTER JOIN passengers ON flight.id = passengers.flight_id;
 
   
 
