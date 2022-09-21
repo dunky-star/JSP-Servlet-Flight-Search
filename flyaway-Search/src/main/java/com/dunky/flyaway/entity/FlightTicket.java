@@ -16,7 +16,7 @@ public class FlightTicket {
 	   return sb.toString();
 	}
 	
-	String flight_ticket = randomString(8);
+	String flight_ticket = randomString(20);
 	
 	public FlightTicket() {
 	
