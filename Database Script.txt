@@ -71,6 +71,11 @@ VALUES
 VALUES 
   (2, 'Geo', 'Kaligs', 30, 'Male', '36D');
   
+  
+  
+MySQL INNER JOIN:
+******************
+  SELCT * FROM flight INNER JOIN passengers ON flight.id = passengers.flight_id;
 
   
 
