@@ -12,7 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.BatchSize;
+
 @Entity  // Using annotation-based metadata is same as "native" strategy in xml-based metadata. 
+@BatchSize(size=4)
 @Table(name = "flight")
 public class Flight {
 	
