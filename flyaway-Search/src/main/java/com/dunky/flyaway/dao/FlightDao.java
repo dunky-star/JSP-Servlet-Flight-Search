@@ -85,6 +85,33 @@ public class FlightDao {
         }
         return flight;
     }
+	
+	/**
+     * Get all Flight
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public List <Flight> getAllFlight() {
+
+        Transaction transaction = null;
+        List <Flight> listOfFlight = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get a user object
+
+            listOfFlight = session.createQuery("from Flight").getResultList();
+
+            // commit transaction
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return listOfFlight;
+    }
 
 
 }

@@ -85,5 +85,32 @@ public class PassengersDao {
         }
         return passenger;
     }
+	
+	/**
+     * Get all Passengers
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public List <Passengers> getAllPassengers() {
+
+        Transaction transaction = null;
+        List <Passengers> listOfPassengers = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get a user object
+
+            listOfPassengers = session.createQuery("from Passengers").getResultList();
+
+            // commit transaction
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return listOfPassengers;
+    }
 
 }
