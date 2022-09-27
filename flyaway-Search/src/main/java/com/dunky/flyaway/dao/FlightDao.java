@@ -1,5 +1,7 @@
 package com.dunky.flyaway.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -98,7 +100,7 @@ public class FlightDao {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             // start a transaction
             transaction = session.beginTransaction();
-            // get a user object
+            // get a flight object
 
             listOfFlight = session.createQuery("from Flight").getResultList();
 

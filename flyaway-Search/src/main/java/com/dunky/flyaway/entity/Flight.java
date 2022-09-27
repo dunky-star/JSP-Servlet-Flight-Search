@@ -1,5 +1,6 @@
 package com.dunky.flyaway.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -124,6 +125,15 @@ public class Flight {
 
 	public void setPassengers(List<Passengers> passengers) {
 		this.passengers = passengers;
+	}
+	
+	// Add convenience method for bi-directional relationship.
+	public void add(Passengers tempPassengers) {
+		if(passengers == null) {
+			passengers = new ArrayList<>();
+		}
+		passengers.add(tempPassengers);
+		tempPassengers.setFlight(this);
 	}
 	
 	
