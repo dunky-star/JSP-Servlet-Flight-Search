@@ -93,7 +93,7 @@ public class PassengersDao {
      * @return
      */
     @SuppressWarnings("unchecked")
-    public List <Passengers> getAllPassengers() {
+    public List<Passengers> getAllPassengers() {
 
         Transaction transaction = null;
         List <Passengers> listOfPassengers = null;

@@ -1,6 +1,7 @@
 package com.dunky.flyaway.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,7 +21,7 @@ import com.dunky.flyaway.entity.Flight;
  * @email Geoffrey Duncan Opiyo
  */
 
-@WebServlet("/FlightPassengersCtrl")
+@WebServlet("/")
 public class FlightPassengersCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private FlightDao flightDao;
@@ -32,61 +33,61 @@ public class FlightPassengersCtrl extends HttpServlet {
     
     	flightDao = new FlightDao();
     }
+	
+	
+	    /**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			    throws ServletException, IOException {
+			        doGet(request, response);
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			// read the "command" parameter
-			String theCommand = request.getParameter("command");
-			
-			// if the command is missing, then default to listing flights.
-			if (theCommand == null) {
-				theCommand = "LIST";
-			}
-			
-			// route to the appropriate method
-			switch (theCommand) {
-			
-			case "LIST":
-				listFlights(request, response);
-				break;
-								
-		     }
-		
-	      }
-	        catch (Exception exc) {
-		      throw new ServletException(exc);
+		String action = request.getServletPath();
+		 
+		 try {
+	            switch (action) {
+	                case "/searchFlight":
+	                    searchForm(request, response);
+	                    break;
+	               
+	                default:
+	                    listFlights(request, response);
+	                    break;
+	            }
 	        }
+	         catch (Exception exc) {
+		      throw new ServletException(exc);
+	         }
 	}
 	
 	
-    // Method to send details to Flight JSP for display of Flight information.
-	private void listFlights(HttpServletRequest request, HttpServletResponse response) 
-		throws Exception {
-
-		// get flights from db util
-		List<Flight> flights = flightDao.getAllFlight();
+    private void searchForm(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
 		
-		// add students to the request
-		request.setAttribute("FLIGHT_LIST", flights);
-				
-		// send to JSP page (view)
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/list-flights.jsp");
-		dispatcher.forward(request, response);
+	}
+
+
+	// Method to send details to Flight JSP for display of Flight information.
+	private void listFlights(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+	        
+			// get flights from db util
+			List <Flight> flights = flightDao.getAllFlight();
+			
+	        // add flight to the request
+			request.setAttribute("FLIGHT_LIST", flights);
+			
+			// send to JSP page (view)
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("list-flights.jsp");
+	        dispatcher.forward(request, response);
+		
 	}
 
 	
-		
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-    }
-
-
 }
 
 

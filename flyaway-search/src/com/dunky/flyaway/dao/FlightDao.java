@@ -93,7 +93,7 @@ public class FlightDao {
      * @return
      */
     @SuppressWarnings("unchecked")
-    public List <Flight> getAllFlight() {
+    public List<Flight> getAllFlight() {
 
         Transaction transaction = null;
         List <Flight> listOfFlight = null;
