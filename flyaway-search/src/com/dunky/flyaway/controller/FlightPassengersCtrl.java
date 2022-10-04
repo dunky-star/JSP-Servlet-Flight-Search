@@ -7,19 +7,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dunky.flyaway.dao.FlightDao;
+import com.dunky.flyaway.entity.Flight;
+
 /**
- * Servlet implementation class FlightPassengerController
+ * FlightPassengersCtrl.java Controller Servlet
+ * This servlet acts as a page controller for the application, handling all
+ * requests from the user.
+ * @email Geoffrey Duncan Opiyo
  */
-@WebServlet("/FlightPassengerController")
-public class FlightPassengerController extends HttpServlet {
+
+@WebServlet("/FlightPassengersCtrl")
+public class FlightPassengersCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private FlightDao flightDao;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public FlightPassengerController() {
-        super();
-        // TODO Auto-generated constructor stub
+	// Servlet initialization with the database object.
+	@Override
+	public void init() throws ServletException {
+		super.init();
+    
+    	flightDao = new FlightDao();
     }
 
 	/**

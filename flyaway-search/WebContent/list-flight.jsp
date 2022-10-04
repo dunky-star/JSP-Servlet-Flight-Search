@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.*" %>
+<%@ page import="java.util.*, com.dunky.flyaway.controller.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
@@ -17,35 +17,17 @@
 
 <div id="wrapper">
  <div id="header">
-    <h2> SimpliLearn University</h2>
+    <h2> Flyaway Booking app.</h2>
  </div>
 </div>
 
 <div id="container">
 	<div id="content">
-	
-	        <!-- put new button: Add Student -->
-			
-			<input type="button" value="Add Student" 
-				   onclick="window.location.href='add-student-form.jsp'; return false;"
-				   class="add-student-button"
-			/>
-			
-			   <!--  add a search box -->
-			<form action="StudentControllerServlet" method="GET">
-		
-				<input type="hidden" name="command" value="SEARCH" />
-			
-                Search student: <input type="text" name="theSearchName" />
-                
-                <input type="submit" value="Search" class="add-student-button" />
-            
-            </form>
-	
-		<table>
+				   
+	   <table>
 			<tr>
-				<th> First Name </th>
-				<th> Last Name </th>
+				<th> From </th>
+				<th> To </th>
 				<th> Email Address </th>
 				<th> Action </th>
 			</tr>
