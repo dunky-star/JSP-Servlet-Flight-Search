@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.*,com.dunky.flyaway.controller" %>
+<%@ page import="java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Mini App - Student Records.</title>
+<title>Flight Booking App. for Flyaway.</title>
 <link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 
