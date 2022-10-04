@@ -41,7 +41,7 @@ public class FlightPassengersCtrl extends HttpServlet {
 			// read the "command" parameter
 			String theCommand = request.getParameter("command");
 			
-			// if the command is missing, then default to listing students
+			// if the command is missing, then default to listing flights.
 			if (theCommand == null) {
 				theCommand = "LIST";
 			}
