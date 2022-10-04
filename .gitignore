@@ -6,3 +6,4 @@ secret.txt
 Servers/
 /build/
 .settings/
+/lib/
