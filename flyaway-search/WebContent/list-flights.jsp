@@ -23,7 +23,18 @@
 
 <div id="container">
 	<div id="content">
-				   
+			
+		<!--  add a search box -->
+		<form action="FlightPassController" method="GET">
+		
+			<input type="hidden" name="command" value="SEARCH" />
+			
+        	Search Flight: <input type="text" name="theSearchName" />
+                
+         	<input type="submit" value="Search" class="seacrh-flight-button" />
+            
+        </form>	   
+            
 	   <table>
 			<tr>
 				<th> From </th>
@@ -32,10 +43,16 @@
 				<th> Flight time </th>
 				<th> Flight date </th>
 				<th> Flight type </th>
-				<th> Action </th>
+				<th> Book Flight </th>
 			</tr>
 			
 			<c:forEach var="tempFlight" items = "${FLIGHT_LIST}">
+			
+			   <!-- set up a link for each flight -->
+				<c:url var="tempLink" value="FlightPassController">
+					<c:param name="command" value="LOAD" />
+					<c:param name="flightId" value="${tempFlight.id}" />
+				</c:url>
 					
 				<tr>
 					<td>${tempFlight.from}</td>
@@ -44,6 +61,11 @@
 					<td>${tempFlight.flightTime}</td>
 					<td>${tempFlight.flightDate}</td>
 					<td>${tempFlight.flightType}</td>
+					<td>
+					   <a href="${tempLink}"
+						onclick="if (!(confirm('Are you sure you want to book this flight?'))) return false">
+						Get Ticket</a>
+					</td>
 				</tr>
 			</c:forEach>
 			

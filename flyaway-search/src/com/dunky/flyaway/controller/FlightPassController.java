@@ -51,6 +51,10 @@ public class FlightPassController extends HttpServlet {
 			case "LIST":
 				listFlights(request, response);
 				break;
+				
+			case "LOAD":
+				loadFlight(request, response);
+				break;
 						
 			case "SEARCH":
                 searchFlights(request, response);
@@ -68,8 +72,26 @@ public class FlightPassController extends HttpServlet {
 	}
 
 	
-	
-	
+
+	private void loadFlight(HttpServletRequest request, HttpServletResponse response) 
+			throws Exception {
+
+			// read flight id from form data
+			// String theFlightId = request.getParameter("flightId");
+			int id = Integer.parseInt(request.getParameter("flightId"));
+			
+			// get flight from database (db util)
+			Flight theFlight = flightDao.getFlight(id);
+			
+			// place flight in the request attribute
+			request.setAttribute("THE_FLIGHT", theFlight);
+			
+			// send to jsp page: booking-flight-form.jsp.jsp
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher("/booking-flight-form.jsp");
+			dispatcher.forward(request, response);		
+	}
+
 	private void searchFlights(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
@@ -92,6 +114,7 @@ public class FlightPassController extends HttpServlet {
 		}
 
 	
+		
 	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
