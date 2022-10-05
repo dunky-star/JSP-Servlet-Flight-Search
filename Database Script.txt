@@ -88,6 +88,37 @@ VALUES
   ( 'Nairobi', 'Dar-es-Salaam', '200', '07:40', '2023-02-22', 'Business');
   
   
+
+*******
+
+INSERT INTO Flight
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+VALUES 
+  ( 'New York', 'Washington', '200', '19:00', '2023-02-11', 'Economy');
+      
+  INSERT INTO Flight
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+VALUES 
+  ( 'Chicago', 'Hearthrow', '200', '00:00', '2023-04-22', 'Business');
+  
+  INSERT INTO Flight
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+VALUES 
+  ( 'Abuja', 'Lagos', '140', '23:00', '2023-04-04', 'Economy');
+  
+   
+   INSERT INTO Flight
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+VALUES 
+  ( 'Ankara', 'Khartoum', '300', '03:00', '2022-12-03', 'Business');
+  
+  
+    INSERT INTO Flight
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+VALUES 
+  ( 'Ebb', 'Tripoli', '250', '07:50', '2022-12-13', 'Business');
+  
+  
   
   
  
