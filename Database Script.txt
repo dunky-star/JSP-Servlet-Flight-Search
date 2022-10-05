@@ -33,34 +33,64 @@ DML:
 INSERT INTO Flight
   ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
 VALUES 
-  ( 'EBB', 'DXB', '200', '16:45', '2022-12-09', 'Economy');
+  ( 'EBB', 'Kigali', '250', '11:30', '2022-11-09', 'Economy');
       
   INSERT INTO Flight
   ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
 VALUES 
-  ( 'DXB', 'EBB', '150', '09:45', '2023-05-10', 'Business');
+  ( 'DXB', 'Sydney', '170', '00:45', '2022-11-10', 'First class');
   
   INSERT INTO Flight
   ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
 VALUES 
-  ( 'DXB', 'Joburg', '210', '23:30', '2022-10-15', 'First Class');
+  ( 'Hongkong', 'Mumbai', '210', '23:00', '2023-02-15', 'First Class');
   
    
    INSERT INTO Flight
   ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
 VALUES 
-  ( 'Banglore', 'Makal', '150', '00:30', '2022-11-15', 'First Class');
+  ( 'Banglore', 'Nairobi', '300', '00:00', '2022-12-05', 'Business');
   
   
     INSERT INTO Flight
   ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
 VALUES 
-  ( 'Gulu', 'Hawaii', '210', '01:00', '2023-02-16', 'Business');
+  ( 'Gulu', 'Dar-es-Salaam', '400', '06:30', '2023-02-02', 'Business');
+  
+
+
+******
+INSERT INTO Flight
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+VALUES 
+  ( 'Kigali', 'Ebb', '250', '23:50', '2023-02-10', 'Economy');
+      
+  INSERT INTO Flight
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+VALUES 
+  ( 'Chicago', 'London', '210', '00:50', '2023-02-20', 'Business');
+  
+  INSERT INTO Flight
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+VALUES 
+  ( 'Kolkata', 'Mumbai', '210', '23:15', '2023-03-03', 'Economy');
+  
+   
+   INSERT INTO Flight
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+VALUES 
+  ( 'Banglore', 'Rajkot', '350', '03:30', '2022-11-18', 'Business');
+  
+  
+    INSERT INTO Flight
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+VALUES 
+  ( 'Nairobi', 'Dar-es-Salaam', '200', '07:40', '2023-02-22', 'Business');
   
   
   
   
-  
+ 
 INSERT INTO Passengers
   (flight_id, first_Name, last_Name, age, gender, seat_number) 
 VALUES 
