@@ -28,9 +28,6 @@ public class Passengers {
 	@Column(name = "last_name")
 	private String lastName;
 	
-	@Column(name = "age")
-	private int age;
-	
 	@Column(name = "gender")
 	private String gender;
 	
@@ -50,10 +47,9 @@ public class Passengers {
 
     }
 	
-	public Passengers(String firstName, String lastName, int age, String gender, String seatNumber, FlightTicket flightTicket) {
+	public Passengers(String firstName, String lastName, String gender, String seatNumber, FlightTicket flightTicket) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.age = age;
 		this.gender = gender;
 		this.seatNumber = seatNumber;
 		this.flightTicket = flightTicket;
@@ -99,16 +95,6 @@ public class Passengers {
 	}
 
 
-	public int getAge() {
-		return age;
-	}
-
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-
 	public String getGender() {
 		return gender;
 	}
@@ -140,9 +126,10 @@ public class Passengers {
 
 	@Override
 	public String toString() {
-		return "Passengers [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age
-				+ ", gender=" + gender + ", seatNumber=" + seatNumber + "]";
+		return "Passengers [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender
+				+ ", seatNumber=" + seatNumber + ", flightTicket=" + flightTicket + ", flight=" + flight + "]";
 	}
+
 
 	
 }

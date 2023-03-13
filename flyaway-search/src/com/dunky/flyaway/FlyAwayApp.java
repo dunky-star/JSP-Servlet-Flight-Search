@@ -12,14 +12,14 @@ package com.dunky.flyaway;
 	  
 	  public static void main(String[] args) {
   
-		  FlightDao flightDao = new FlightDao(); PassengersDao passengersDao = new
-		  PassengersDao();
+		  FlightDao flightDao = new FlightDao(); 
+		  PassengersDao passengersDao = new PassengersDao();
 		  
-		  Flight flight = new Flight("Kigali", "Joburg", 100, "05:00", "2023-01-01",
-		  "Economy"); flightDao.saveFlight(flight);
+		  Flight flight = new Flight("Kigali", "Joburg", 100, "05:00", "2023-01-01","Economy"); 
+		  flightDao.saveFlight(flight);
 		  
-		  Flight flight1 = new Flight("EBB", "DXB", 100, "16:45", "2022-12-25",
-		  "Business"); flightDao.saveFlight(flight1);
+		  Flight flight1 = new Flight("EBB", "DXB", 100, "16:45", "2022-12-25", "Business"); 
+		  flightDao.saveFlight(flight1);
 		  
 		  // Create some passenger and issue a flight ticket.
 		  FlightTicket ticket1 = new FlightTicket();
@@ -35,9 +35,10 @@ package com.dunky.flyaway;
 		  passenger2.setFlight(flight1);
 		  passengersDao.savePassengers(passenger2);
 		  
-		  FlightTicket ticket3 = new FlightTicket(); ticket3.getFlight_ticket();
-		  Passengers passenger3 = new Passengers("Anjana", "Nice", 23, "Male", "37K",
-		  ticket3); passenger3.setFlight(flight);
+		  FlightTicket ticket3 = new FlightTicket(); 
+		  ticket3.getFlight_ticket();
+		  Passengers passenger3 = new Passengers("Anjana", "Nice", 23, "Male", "37K",ticket3);
+		  passenger3.setFlight(flight);
 		  passengersDao.savePassengers(passenger3); 
 		  } 
  
