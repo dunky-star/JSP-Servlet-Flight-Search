@@ -102,7 +102,7 @@ public class FlightDao {
             transaction = session.beginTransaction();
             // get a flight object
 
-            listOfFlight = session.createQuery("from Flight").getResultList();
+            listOfFlight = session.createQuery("from Flight ORDER BY flightType").getResultList();
 
             // commit transaction
             transaction.commit();
