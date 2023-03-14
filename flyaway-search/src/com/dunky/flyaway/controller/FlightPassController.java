@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dunky.flyaway.dao.FlightDao;
+import com.dunky.flyaway.dao.PassengersDao;
 import com.dunky.flyaway.entity.Flight;
+import com.dunky.flyaway.entity.Passengers;
 
 /**
  * FlightPassController.java Controller Servlet
@@ -23,6 +25,7 @@ import com.dunky.flyaway.entity.Flight;
 public class FlightPassController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private FlightDao flightDao;
+	private PassengersDao passengersDao;
        
 	// Servlet initialization with the database object.
 		@Override
@@ -30,6 +33,7 @@ public class FlightPassController extends HttpServlet {
 			super.init();
 		   
 	    	flightDao = new FlightDao();
+	    	passengersDao = new PassengersDao();
 		}
 
 	/**
@@ -54,6 +58,10 @@ public class FlightPassController extends HttpServlet {
 				
 			case "LOAD":
 				loadFlight(request, response);
+				break;
+				
+			case "SAVE":
+				savePassengers(request, response);
 				break;
 						
 			case "SEARCH":
@@ -112,8 +120,29 @@ public class FlightPassController extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/list-flights.jsp");
 			dispatcher.forward(request, response);
 		}
+		
+		
+	// Method to enter and save booking details for a customer.
+		private void savePassengers(HttpServletRequest request, HttpServletResponse response) 
+				throws Exception {
 
-	
+				// read flight id from form data
+				// String theFlightId = request.getParameter("flightId");
+				int idFlight = Integer.parseInt(request.getParameter("flightId"));
+				
+				// get flight from database (db util)
+				Flight theFlight = flightDao.getFlight(idFlight);
+				
+				// place flight in the request attribute
+				request.setAttribute("THE_FLIGHT", theFlight);
+				
+				// send to jsp page: booking-flight-form.jsp.jsp
+				RequestDispatcher dispatcher = 
+						request.getRequestDispatcher("/booking-confirmed-form.jsp");
+				dispatcher.forward(request, response);		
+		}
+		
+
 		
 	
 	/**
