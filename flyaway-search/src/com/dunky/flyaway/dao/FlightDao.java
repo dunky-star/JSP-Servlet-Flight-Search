@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import com.dunky.flyaway.entity.Flight;
 import com.dunky.flyaway.util.HibernateUtil;
@@ -114,6 +115,54 @@ public class FlightDao {
         }
         return listOfFlight;
     }
+    
+    
+    /**
+     * Search all Flights
+     * @return matching result
+     */
+    
+    @SuppressWarnings("unchecked")
+    public List<Flight> searchFlights(String theSearchName) {
+    	
+    	 Transaction transaction = null;
+         List <Flight> listSearchFlight = null;
+         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+	             // start a transaction
+	             transaction = session.beginTransaction();
+	             // get a flight object
+	        
+		        //
+		        // only search by name if theSearchName is not empty
+		        //
+		        if (theSearchName != null && theSearchName.trim().length() > 0) {
+		            // search for firstName or lastName ... case insensitive
+		        	listSearchFlight = session.createQuery("from Flight where lower(from) like :theName").getResultList();
+		        	((Query) listSearchFlight).setParameter("theName", "%" + theSearchName.toLowerCase() + "%");
+		        }
+		        else {
+		            // theSearchName is empty ... so just get all customers
+		        	listSearchFlight = session.createQuery("from Flight ORDER BY flightType").getResultList();            
+		        }
+        
+		        // commit transaction
+		        transaction.commit();
+		        
+		  } catch (Exception e) {
+		        if (transaction != null) {
+		            transaction.rollback();
+		        }
+		        e.printStackTrace();
+		  }
+         
+        // execute the query
+        List<Flight> flights = listSearchFlight;
+                
+        // return the results        
+        return flights;
+        
+    }
+	
 
 
 }

@@ -19,7 +19,7 @@
 		
 		<div id="container">
 			<h3>Book Flight</h3>
-	    <form:form action="savePassenger" modelAttribute="passenger" method="POST">
+	    <form:form action="FlightPassController" method="POST">
 		
 			<table>
 				<tbody>

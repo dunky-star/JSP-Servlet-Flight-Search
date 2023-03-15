@@ -60,9 +60,6 @@ public class FlightPassController extends HttpServlet {
 				loadFlight(request, response);
 				break;
 				
-			case "SAVE":
-				savePassengers(request, response);
-				break;
 						
 			case "SEARCH":
                 searchFlights(request, response);
@@ -100,8 +97,21 @@ public class FlightPassController extends HttpServlet {
 			dispatcher.forward(request, response);		
 	}
 
-	private void searchFlights(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	private void searchFlights(HttpServletRequest request, HttpServletResponse response) 
+			throws Exception {
+		
+		// read the search information from the form data.
+        String theSearchName = request.getParameter("theSearchName");
+		
+        // search Flights from DB Utility
+        List<Flight> theFlight = flightDao.searchFlights(theSearchName);
+        
+        // add flights to the request
+        request.setAttribute("FLIGHT_LIST", theFlight);
+                
+        // send to JSP page (view)
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/list-flights.jsp");
+        dispatcher.forward(request, response);
 		
 	}
 	
@@ -113,7 +123,7 @@ public class FlightPassController extends HttpServlet {
 			// get flights from db util
 			List <Flight> flights = flightDao.getAllFlight();
 			
-			// add students to the request
+			// add flights to the request
 			request.setAttribute("FLIGHT_LIST", flights);
 					
 			// send to JSP page (view)
@@ -148,9 +158,28 @@ public class FlightPassController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	        try {
+	            // read the "command" parameter
+	            String theCommand = request.getParameter("command");
+	                    
+	            // route to the appropriate method
+	            switch (theCommand) {
+	                            
+	            case "SAVE":
+					savePassengers(request, response);
+					break;
+	                                
+	            default:
+	            	listFlights(request, response);
+	            }
+	                
+	        }
+	        catch (Exception exc) {
+	            throw new ServletException(exc);
+	        }
+	        
+	    }
 
 }
