@@ -73,5 +73,9 @@
 	</div>
 </div>
 
+<p>
+	<a href="http://localhost:8080/flyaway-search/index.jsp">Back</a>
+</p>
+
 </body>
 </html>

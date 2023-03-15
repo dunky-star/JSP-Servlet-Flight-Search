@@ -53,7 +53,7 @@
 	    <div style="clear: both;"></div>
 			
 		<p>
-			<a href="FlightPassController">Flight List</a>
+			<a href="FlightPassController">Back</a>
 		</p>
 	</div>
 </body>

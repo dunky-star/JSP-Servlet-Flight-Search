@@ -53,7 +53,8 @@ public class Flight {
 
     }
 
-	public Flight(String from, String to, int seat, String flightTime, String flightDate, String flightType) {
+	public Flight(int id, String from, String to, int seat, String flightTime, String flightDate, String flightType) {
+		this.id = id;
 		this.from = from;
 		this.to = to;
 		this.seat = seat;

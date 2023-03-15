@@ -80,7 +80,7 @@ public List<Flight> searchFlights(String theSearchName)  throws Exception {
         while (myRs.next()) {
             
             // retrieve data from result set row
-            // int id = myRs.getInt("id");
+            int id = myRs.getInt("id");
             String from = myRs.getString("flight_from");
             String to = myRs.getString("flight_to");
             int seat = Integer.valueOf(myRs.getString("seat"));
@@ -89,7 +89,7 @@ public List<Flight> searchFlights(String theSearchName)  throws Exception {
             String flightType = myRs.getString("flight_type");
             
             // create new student object
-            Flight tempFlight = new Flight(from, to, seat, flightTime, flightDate, flightType);
+            Flight tempFlight = new Flight(id, from, to, seat, flightTime, flightDate, flightType);
             
             // add it to the list of students
             flights.add(tempFlight);            

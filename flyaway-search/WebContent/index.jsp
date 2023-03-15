@@ -145,7 +145,7 @@
 				</div>
 				<!-- Footer About Text-->
 				<div class="col-lg-4">
-					<h4 class="text-uppercase mb-4">About Freelancer</h4>
+					<h4 class="text-uppercase mb-4">About Flyaway app</h4>
 					<p class="lead mb-0">
 						Developer: Geoffrey Duncan Opiyo
 						by <a href="https://21dj-online.com">More...</a> .
