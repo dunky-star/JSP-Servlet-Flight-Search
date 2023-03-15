@@ -96,8 +96,7 @@ public List<Flight> searchFlights(String theSearchName)  throws Exception {
         }
         
         return flights;
-    }
-    finally {
+    } finally {
         // clean up JDBC objects
         close(myConn, myStmt, myRs);
     }
