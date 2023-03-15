@@ -11,7 +11,7 @@
 	href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
 <!-- Main css -->
-<link rel="stylesheet" href="css/style.css">
+<link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
 					<div class="signup-form">
 						<h2 class="form-title">Sign up</h2>
 					
-						<form method="" action="" class="register-form"
+						<form method="post" action="Register" class="register-form"
 							id="register-form">
 							<div class="form-group">
 								<label for="name"><i
@@ -82,5 +82,5 @@
 
 
 </body>
-<!-- This templates was made by Colorlib (https://colorlib.com) -->
+
 </html>

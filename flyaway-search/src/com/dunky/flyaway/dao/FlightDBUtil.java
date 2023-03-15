@@ -102,5 +102,37 @@ public List<Flight> searchFlights(String theSearchName)  throws Exception {
     }
   }
 
+public void addAdminUser(Student theStudent) throws Exception {
+
+	Connection myConn = null;
+	PreparedStatement myStmt = null;
+	
+	try {
+		// get db connection
+		myConn = dataSource.getConnection();
+		
+		// create sql for insert
+		String sql = "insert into admin_users "
+				   + "(first_name, last_name, email) "
+				   + "values (?, ?, ?)";
+		
+		myStmt = myConn.prepareStatement(sql);
+		
+		// set the param values for the student
+		myStmt.setString(1, theStudent.getFirstName());
+		myStmt.setString(2, theStudent.getLastName());
+		myStmt.setString(3, theStudent.getEmail());
+		
+		// execute sql insert
+		myStmt.execute();
+	}
+	finally {
+		// clean up JDBC objects
+		close(myConn, myStmt, null);
+	}
+}
+
+
+
 }
 
