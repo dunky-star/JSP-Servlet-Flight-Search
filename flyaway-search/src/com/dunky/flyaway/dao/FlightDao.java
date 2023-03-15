@@ -122,11 +122,12 @@ public class FlightDao {
      * @return matching result
      */
     
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     public List<Flight> searchFlights(String theSearchName) {
     	 	
     	 Transaction transaction = null;
-         List <Flight> listSearchFlight = null;
+         @SuppressWarnings("rawtypes")
+		Query listSearchFlight = null;
          try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 	             // start a transaction
 	             transaction = session.beginTransaction();
@@ -137,12 +138,12 @@ public class FlightDao {
 		        //
 		        if (theSearchName != null && theSearchName.trim().length() > 0) {
 		            // search for flight_from or flight_to ... case insensitive
-		        	listSearchFlight = session.createQuery("from Flight where lower(from) like :theName or lower(to) like :theName").getResultList();
+		        	listSearchFlight = session.createQuery("from foo Flight as foo where foo.from=:theName or foo.to=:theName");
 		        	((Query) listSearchFlight).setParameter("theName", "%" + theSearchName.toLowerCase() + "%");
 		        }
 		        else {
 		            // theSearchName is empty ... so just get all customers
-		        	listSearchFlight = session.createQuery("from Flight ORDER BY flightType").getResultList();            
+		        	listSearchFlight = (Query) session.createQuery("from Flight ORDER BY flightType");            
 		        }
 		       
         
@@ -156,9 +157,8 @@ public class FlightDao {
 		        e.printStackTrace();
 		  }
          
-		  return listSearchFlight;
+		  return (List<Flight>) listSearchFlight;
          
-       
         
     }
 	

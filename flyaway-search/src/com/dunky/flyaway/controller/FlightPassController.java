@@ -3,6 +3,8 @@ package com.dunky.flyaway.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.sql.DataSource;
+import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,10 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dunky.flyaway.dao.FlightDBUtil;
 import com.dunky.flyaway.dao.FlightDao;
 import com.dunky.flyaway.dao.PassengersDao;
 import com.dunky.flyaway.entity.Flight;
-import com.dunky.flyaway.entity.Passengers;
+// import com.dunky.flyaway.entity.Passengers;
 
 /**
  * FlightPassController.java Controller Servlet
@@ -24,8 +27,12 @@ import com.dunky.flyaway.entity.Passengers;
 @WebServlet("/FlightPassController")
 public class FlightPassController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private FlightDBUtil flightDbUtil;
 	private FlightDao flightDao;
 	private PassengersDao passengersDao;
+	
+	@Resource(name="jdbc/web_student_j")  // Connection pool setup under /WebContent/META-INF/Context
+	private DataSource dataSource;
        
 	// Servlet initialization with the database object.
 		@Override
@@ -34,6 +41,15 @@ public class FlightPassController extends HttpServlet {
 		   
 	    	flightDao = new FlightDao();
 	    	passengersDao = new PassengersDao();
+	    	
+	    	// create our student db util ... and pass in the conn pool / datasource
+			try {
+				flightDbUtil = new FlightDBUtil(dataSource);
+			}
+			catch (Exception exc) {
+				throw new ServletException(exc);
+			}
+			
 		}
 
 	/**
@@ -97,23 +113,21 @@ public class FlightPassController extends HttpServlet {
 			dispatcher.forward(request, response);		
 	}
 
-	private void searchFlights(HttpServletRequest request, HttpServletResponse response) 
-			throws Exception {
-		
-		// read the search information from the form data.
+	
+    private void searchFlights(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        // read search name from form data
         String theSearchName = request.getParameter("theSearchName");
-		
-        // search Flights from DB Utility
-        List<Flight> theFlight = flightDao.searchFlights(theSearchName);
         
-        // add flights to the request
-        request.setAttribute("FLIGHT_LIST", theFlight);
+        // search students from db util
+        List<Flight> flights = flightDbUtil.searchFlights(theSearchName);
+        
+        // add students to the request
+        request.setAttribute("FLIGHT_LIST", flights);
                 
         // send to JSP page (view)
         RequestDispatcher dispatcher = request.getRequestDispatcher("/list-flights.jsp");
         dispatcher.forward(request, response);
-		
-	}
+    }
 	
 
 	// Method to send details to Flight JSP for display of Flight information.
