@@ -19,7 +19,6 @@ CREATE TABLE Passengers (
   id          int(11) NOT NULL AUTO_INCREMENT, 
   first_Name  varchar(50), 
   last_Name   varchar(50), 
-  age         int(10), 
   gender      char(6), 
   seat_number varchar(11) UNIQUE, 
   PRIMARY KEY (id)) type=InnoDB;
@@ -123,12 +122,12 @@ VALUES
   
  
 INSERT INTO Passengers
-  (flight_id, first_Name, last_Name, age, gender, seat_number) 
+  (flight_id, first_Name, last_Name, gender, seat_number) 
 VALUES 
   (2, 'Geo', 'Kaligs', 30, 'Male', '36D');
   
   INSERT INTO Passengers
-  (flight_id, first_Name, last_Name, age, gender, seat_number) 
+  (flight_id, first_Name, last_Name, gender, seat_number) 
 VALUES 
   (2, 'Geo', 'Kaligs', 30, 'Male', '36D');
   
