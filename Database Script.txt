@@ -41,92 +41,92 @@ ON DELETE CASCADE ON UPDATE CASCADE;
 DML:
 *****
 INSERT INTO Flight
-  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_price ,flight_type) 
 VALUES 
-  ( 'EBB', 'Kigali', '250', '11:30', '2022-11-09', 'Economy');
+  ( 'EBB', 'Kigali', '250', '11:30', '2022-11-09', 2000,'Economy');
       
   INSERT INTO Flight
-  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+  ( flight_from, flight_to, seat, flight_time, flight_date,flight_price , flight_type) 
 VALUES 
-  ( 'DXB', 'Sydney', '170', '00:45', '2022-11-10', 'First class');
+  ( 'DXB', 'Sydney', '170', '00:45', '2022-11-10', 1500,'First class');
   
   INSERT INTO Flight
-  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_price ,flight_type) 
 VALUES 
-  ( 'Hongkong', 'Mumbai', '210', '23:00', '2023-02-15', 'First Class');
+  ( 'Hongkong', 'Mumbai', '210', '23:00', '2023-02-15', 1300,'First Class');
   
    
    INSERT INTO Flight
-  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_price ,flight_type) 
 VALUES 
-  ( 'Banglore', 'Nairobi', '300', '00:00', '2022-12-05', 'Business');
+  ( 'Banglore', 'Nairobi', '300', '00:00', '2022-12-05', 500,'Business');
   
   
     INSERT INTO Flight
-  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_price ,flight_type) 
 VALUES 
-  ( 'Gulu', 'Dar-es-Salaam', '400', '06:30', '2023-02-02', 'Business');
+  ( 'Gulu', 'Dar-es-Salaam', '400', '06:30', '2023-02-02', 400,'Business');
   
 
 
 ******
 INSERT INTO Flight
-  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_price ,flight_type) 
 VALUES 
-  ( 'Kigali', 'Ebb', '250', '23:50', '2023-02-10', 'Economy');
+  ( 'Kigali', 'Ebb', '250', '23:50', '2023-02-10', 600, 'Economy');
       
   INSERT INTO Flight
-  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_price ,flight_type) 
 VALUES 
-  ( 'Chicago', 'London', '210', '00:50', '2023-02-20', 'Business');
+  ( 'Chicago', 'London', '210', '00:50', '2023-02-20', 2500,'Business');
   
   INSERT INTO Flight
-  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_price ,flight_type) 
 VALUES 
-  ( 'Kolkata', 'Mumbai', '210', '23:15', '2023-03-03', 'Economy');
+  ( 'Kolkata', 'Mumbai', '210', '23:15', '2023-03-03', 5000,'Economy');
   
    
    INSERT INTO Flight
-  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_price ,flight_type) 
 VALUES 
-  ( 'Banglore', 'Rajkot', '350', '03:30', '2022-11-18', 'Business');
+  ( 'Banglore', 'Rajkot', '350', '03:30', '2022-11-18', 2300,'Business');
   
   
     INSERT INTO Flight
-  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_price ,flight_type) 
 VALUES 
-  ( 'Nairobi', 'Dar-es-Salaam', '200', '07:40', '2023-02-22', 'Business');
+  ( 'Nairobi', 'Dar-es-Salaam', '200', '07:40', '2023-02-22', 540,'Business');
   
   
 
 *******
 
 INSERT INTO Flight
-  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_price ,flight_type) 
 VALUES 
-  ( 'New York', 'Washington', '200', '19:00', '2023-02-11', 'Economy');
+  ( 'New York', 'Washington', '200', '19:00', '2023-02-11', 1800,'Economy');
       
   INSERT INTO Flight
-  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_price ,flight_type) 
 VALUES 
-  ( 'Chicago', 'Hearthrow', '200', '00:00', '2023-04-22', 'Business');
+  ( 'Chicago', 'Hearthrow', '200', '00:00', '2023-04-22', 780,'Business');
   
   INSERT INTO Flight
-  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_price ,flight_type) 
 VALUES 
-  ( 'Abuja', 'Lagos', '140', '23:00', '2023-04-04', 'Economy');
+  ( 'Abuja', 'Lagos', '140', '23:00', '2023-04-04', 900,'Economy');
   
    
    INSERT INTO Flight
-  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_price ,flight_type) 
 VALUES 
-  ( 'Ankara', 'Khartoum', '300', '03:00', '2022-12-03', 'Business');
+  ( 'Ankara', 'Khartoum', '300', '03:00', '2022-12-03', 980,'Business');
   
   
     INSERT INTO Flight
-  ( flight_from, flight_to, seat, flight_time, flight_date, flight_type) 
+  ( flight_from, flight_to, seat, flight_time, flight_date, flight_price ,flight_type) 
 VALUES 
-  ( 'Ebb', 'Tripoli', '250', '07:50', '2022-12-13', 'Business');
+  ( 'Ebb', 'Tripoli', '250', '07:50', '2022-12-13', 4500,'Business');
   
   
   
