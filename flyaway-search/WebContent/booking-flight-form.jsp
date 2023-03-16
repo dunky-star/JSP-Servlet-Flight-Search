@@ -24,40 +24,46 @@ if(session.getAttribute("name")==null){
 		<div id="header">
 			<h2>Flyaway Booking app.</h2>
 		</div>
-		</div>
+	</div>
 		
 		<div id="container">
 			<h3>Book Flight</h3>
-	    <form:form action="FlightPassController" method="POST">
+	    <form action="FlightPassController" method="GET">
+	    
+	    <input type="hidden" name="command" value="UPDATE" />
+	    
+	    <input type="hidden" name="flightId" value="${THE_FLIGHT.id}" />
 		
 			<table>
 				<tbody>
 					<tr>
 						<td><label>First name:</label></td>
-						<td><form:input path="firstName" /></td>
+						<td><input type="text" name="firstName" /></td>
 					</tr>
-				
+
 					<tr>
 						<td><label>Last name:</label></td>
-						<td><form:input path="lastName" /></td>
+						<td><input type="text" name="lastName" /></td>
 					</tr>
-
 					<tr>
-						<td><label>Email:</label></td>
-						<td><form:input path="email" /></td>
+						<td><label>Gender:</label></td>
+						<td><input type="text" name="gender"  /></td>
 					</tr>
-
+					<tr>
+						<td><label>Seat Number:</label></td>
+						<td><input type="text" name="seatNumber" /></td>
+					</tr>
+					
 					<tr>
 						<td><label></label></td>
-						<td><input type="submit" value="Save" class="save" /></td>
+						<td><input type="submit" value="Issue Ticket" class="save" /></td>
 					</tr>
-
-				
+					
 				</tbody>
 			</table>
 		
 		
-		</form:form>
+		</form>
 	    
 	    <div style="clear: both;"></div>
 			

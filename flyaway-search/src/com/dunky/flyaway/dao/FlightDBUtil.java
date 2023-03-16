@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import com.dunky.flyaway.entity.Flight;
+import com.dunky.flyaway.entity.Passengers;
 import com.dunky.flyaway.entity.Users;
 
 public class FlightDBUtil {
@@ -139,6 +140,7 @@ public void addAdminUser(Users theUser) throws Exception {
 		close(myConn, myStmt, null);
 	}
 }
+
 
 
 

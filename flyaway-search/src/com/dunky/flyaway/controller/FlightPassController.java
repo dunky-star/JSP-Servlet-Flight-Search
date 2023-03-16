@@ -16,6 +16,8 @@ import com.dunky.flyaway.dao.FlightDBUtil;
 import com.dunky.flyaway.dao.FlightDao;
 import com.dunky.flyaway.dao.PassengersDao;
 import com.dunky.flyaway.entity.Flight;
+import com.dunky.flyaway.entity.FlightTicket;
+import com.dunky.flyaway.entity.Passengers;
 // import com.dunky.flyaway.entity.Passengers;
 
 /**
@@ -27,6 +29,7 @@ import com.dunky.flyaway.entity.Flight;
 @WebServlet("/FlightPassController")
 public class FlightPassController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final FlightTicket flightTicket = null;
 	private FlightDBUtil flightDbUtil;
 	private FlightDao flightDao;
 	private PassengersDao passengersDao;
@@ -76,6 +79,10 @@ public class FlightPassController extends HttpServlet {
 				loadFlight(request, response);
 				break;
 				
+			case "UPDATE":
+				bookTickets(request, response);
+				break;
+				
 						
 			case "SEARCH":
                 searchFlights(request, response);
@@ -92,7 +99,34 @@ public class FlightPassController extends HttpServlet {
 		
 	}
 
-	
+
+	private void bookTickets(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+			// read flightId and Passengers info from form data.
+			int id = Integer.parseInt(request.getParameter("flightId"));
+			String firstName = request.getParameter("firstName");
+			String lastName = request.getParameter("lastName");
+			String gender = request.getParameter("gender");
+			String seatNumber = request.getParameter("seatNumber");
+			
+						
+			// create a new passenger object
+			Passengers thePassengers = new Passengers(firstName, lastName, gender, seatNumber,flightTicket );
+						
+			// perform update on database
+			passengersDao.savePassengers(thePassengers);
+						
+			// send them back to the "ticket printing page" page
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher("/confirm-ticket.jsp");
+			try {
+				dispatcher.forward(request, response);
+			} catch (ServletException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			
+	}
 
 	private void loadFlight(HttpServletRequest request, HttpServletResponse response) 
 			throws Exception {
