@@ -109,9 +109,16 @@ public class FlightPassController extends HttpServlet {
 			String gender = request.getParameter("gender");
 			String seatNumber = request.getParameter("seatNumber");
 			
+			// Create a passenger flight ticket.
+			FlightTicket ticket1 = new FlightTicket();
+			ticket1.getFlight_ticket();
+			
+			Flight flight = new Flight();
+			int flight1 = flight.getId();
 						
-			// create a new passenger object
-			Passengers thePassengers = new Passengers(firstName, lastName, gender, seatNumber,flightTicket );
+			// create a new passenger object and assigns ticket1 to it.
+			Passengers thePassengers = new Passengers(firstName, lastName, gender, flight, seatNumber, ticket1);
+			
 						
 			// perform update on database
 			passengersDao.savePassengers(thePassengers);

@@ -3,7 +3,7 @@ function validateForm() {
 	// error fields
 	var theErrorFields = [];
 	
-	// student form
+	// Passengers form
 	var flightTicket = document.forms["flightTicket"];
 	
 	// check first name
@@ -18,10 +18,10 @@ function validateForm() {
 		theErrorFields.push("Last name");
 	}
 	
-	// check email
-	var email = flightTicket["email"].value.trim();;
+	// check gender
+	var email = flightTicket["gender"].value.trim();;
 	if (email == "") {
-		theErrorFields.push("Email");
+		theErrorFields.push("Gender");
 	}
 	
 	if (theErrorFields.length > 0) {
