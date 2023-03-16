@@ -62,7 +62,7 @@ if(session.getAttribute("name")==null){
 	    <div style="clear: both;"></div>
 			
 		<p>
-			<a href="FlightPassController">Back</a>
+			<a href="FlightPassController"><b>Back</b></a>
 		</p>
 	</div>
 </body>
