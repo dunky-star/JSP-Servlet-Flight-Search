@@ -1,26 +1,28 @@
 package com.flyaway.login;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
-import com.dunky.flyaway.dao.FlightDBUtil;
-import com.dunky.flyaway.entity.Users;
 
 /**
  * Servlet implementation class Login
  */
-@WebServlet("/Login")
+@WebServlet("/login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	private FlightDBUtil flightDbUtil;
+      
 	
 	@Resource(name="jdbc/web_student_j")  // Connection pool setup under /WebContent/META-INF/Context
 	private DataSource dataSource;
@@ -30,14 +32,7 @@ public class Login extends HttpServlet {
 	public void init() throws ServletException {
 		super.init();
     	
-    	// create our student db util ... and pass in the conn pool / datasource
-		try {
-			flightDbUtil = new FlightDBUtil(dataSource);
-		}
-		catch (Exception exc) {
-			throw new ServletException(exc);
-		}
-		
+   
 	}
 
 	/**
@@ -45,33 +40,49 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		try {
-			adminUserLogin(request, response);
-		} catch (Exception exc) {
-			
-			 throw new ServletException(exc);
-		}
-		
-	}
-	
-	
-	// Method to add admin user to the database.
-		private void adminUserLogin(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
 			// read student info from form data
 			String uemail = request.getParameter("username");
 			String upwd = request.getParameter("password");
+			// For user login session store
+			HttpSession session = request.getSession();
+			RequestDispatcher dispatcher = null;
+			
+			Connection myConn = null;
+			PreparedStatement myStmt = null;
+			ResultSet myRs = null;
+			
+			try {
+				// get db connection
+				myConn = dataSource.getConnection();
+				// create sql for insert
+				String sql = "select * from admin_users where uemail=? and upwd=?";
+				// create prepared statement
+				myStmt = myConn.prepareStatement(sql);
+				
+				// set params
+				myStmt.setString(1, uemail);
+				myStmt.setString(2, upwd);
+				
+				// execute statement
+				myRs = myStmt.executeQuery();
+				
+				// retrieve data from result set row
+				if (myRs.next()) {
+					  session.setAttribute("name", myRs.getString("uname") );
+					  dispatcher = request.getRequestDispatcher("index.jsp");
+				}
+				else {
+					 request.setAttribute("status", "error");
+					 dispatcher = request.getRequestDispatcher("login.jsp");
+				}	
+				dispatcher.forward(request, response);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+		    }
+	}
+	
+	
 
-			
-			// create a new admin object
-			Users theUser = new Users(uemail, upwd);
-			
-			// Login admin user
-			flightDbUtil.adminUserLogin(theUser);
-					
-			// send back to main page (the admin list)
-			// SEND AS REDIRECT to avoid multiple-browser reload issue
-	        response.sendRedirect(request.getContextPath() + "/index.jsp");
-		}
 
 }

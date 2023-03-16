@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import com.dunky.flyaway.entity.Flight;
@@ -67,6 +68,8 @@ public List<Flight> searchFlights(String theSearchName)  throws Exception {
             String theSearchNameLike = "%" + theSearchName.toLowerCase() + "%";
             myStmt.setString(1, theSearchNameLike);
             myStmt.setString(2, theSearchNameLike);
+            myStmt.setString(3, theSearchNameLike);
+            myStmt.setString(4, theSearchNameLike);
             
         } else {
             // create sql to get all students
@@ -133,56 +136,6 @@ public void addAdminUser(Users theUser) throws Exception {
 	finally {
 		// clean up JDBC objects
 		close(myConn, myStmt, null);
-	}
-}
-
-
-
-public Users adminUserLogin(String uemail, String upwd) throws Exception {
-
-	Users theUser = null;
-	
-	Connection myConn = null;
-	PreparedStatement myStmt = null;
-	ResultSet myRs = null;
-
-	
-	try {
-				
-		// get connection to database
-		myConn = dataSource.getConnection();
-		
-		// create sql to get selected student
-		String sql = "select * from admin_users where uemail=? and upwd=?";
-		
-		// create prepared statement
-		myStmt = myConn.prepareStatement(sql);
-		
-		// set params
-		myStmt.setString(1, uemail);
-		myStmt.setString(2, upwd);
-		
-		// execute statement
-		myRs = myStmt.executeQuery();
-		
-		// retrieve data from result set row
-		if (myRs.next()) {
-			 uemail = myRs.getString("uemail");
-			 upwd = myRs.getString("upwd");
-			
-		
-			// use the studentId during construction
-			theUser = new Users(uemail, upwd);
-		}
-		else {
-			throw new Exception("Could not find user with email: " + uemail);
-		}				
-		
-		return theUser;
-	}
-	finally {
-		// clean up JDBC objects
-		close(myConn, myStmt, myRs);
 	}
 }
 
