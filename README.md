@@ -1,7 +1,7 @@
 # JSP-Servlet-Flight-Search
 Boot camp - (assignment for Phase-2): Become a back-end expert.
 
-Develop and implement a web app for FlyAway Flight Reservation Co., Ltd. to:-
+Develop and implement a web app for FlyAway Flight Reservation Co., Ltd.:-
 
 	1). A search form in the homepage to allow entry of travel details, like the date of travel, source, destination.
 	
