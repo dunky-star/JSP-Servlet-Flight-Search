@@ -3,6 +3,14 @@
 <%@ page import="java.util.*, com.dunky.flyaway.controller.FlightPassController" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<% 
+
+if(session.getAttribute("name")==null){
+	response.sendRedirect("login.jsp");
+}
+	
+%>
+
 <!DOCTYPE html>
 <html>
 <head>

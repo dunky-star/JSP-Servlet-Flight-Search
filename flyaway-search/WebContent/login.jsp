@@ -83,8 +83,8 @@
 	
 	<script type="text/javascript">
 	  var status = document.getElementById("status").value;
-	  if("status" == "success"){
-		  swal("Login sucessful");
+	  if("status" == "failed"){
+		  swal("Sorry!", "Incorrect username or password", "error");
 	  }
 	</script>
 	
