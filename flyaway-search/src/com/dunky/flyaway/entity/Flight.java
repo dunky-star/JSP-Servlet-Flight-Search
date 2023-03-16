@@ -40,6 +40,9 @@ public class Flight {
 	@Column(name = "flight_date")
 	private String flightDate;
 	
+	@Column(name = "flight_price")
+	private int flightPrice;
+	
 	@Column(name = "flight_type")
 	private String flightType;
 	
@@ -53,13 +56,14 @@ public class Flight {
 
     }
 
-	public Flight(int id, String from, String to, int seat, String flightTime, String flightDate, String flightType) {
+	public Flight(int id, String from, String to, int seat, String flightTime, String flightDate, int flightPrice, String  flightType) {
 		this.id = id;
 		this.from = from;
 		this.to = to;
 		this.seat = seat;
 		this.flightTime = flightTime;
 		this.flightDate = flightDate;
+		this.flightPrice = flightPrice;
 		this.flightType = flightType;
 	}
 
@@ -118,6 +122,15 @@ public class Flight {
 
 	public void setFlightType(String flightType) {
 		this.flightType = flightType;
+	}
+	
+
+	public int getFlightPrice() {
+		return flightPrice;
+	}
+
+	public void setFlightPrice(int flightPrice) {
+		this.flightPrice = flightPrice;
 	}
 
 	public List<Passengers> getPassengers() {

@@ -91,10 +91,11 @@ public List<Flight> searchFlights(String theSearchName)  throws Exception {
             int seat = Integer.valueOf(myRs.getString("seat"));
             String flightTime = myRs.getString("flight_time");
             String flightDate = myRs.getString("flight_date");
+            int flightPrice = Integer.valueOf(myRs.getString("flight_price"));
             String flightType = myRs.getString("flight_type");
             
             // create new student object
-            Flight tempFlight = new Flight(id, from, to, seat, flightTime, flightDate, flightType);
+            Flight tempFlight = new Flight(id, from, to, seat, flightTime, flightDate, flightPrice, flightType);
             
             // add it to the list of students
             flights.add(tempFlight);            

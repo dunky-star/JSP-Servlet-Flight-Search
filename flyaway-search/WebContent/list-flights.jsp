@@ -50,6 +50,7 @@ if(session.getAttribute("name")==null){
 				<th> Seat </th>
 				<th> Flight time </th>
 				<th> Flight date </th>
+				<th> Flight Price </th>
 				<th> Flight type </th>
 				<th> Book Flight </th>
 			</tr>
@@ -68,6 +69,7 @@ if(session.getAttribute("name")==null){
 					<td>${tempFlight.seat}</td>
 					<td>${tempFlight.flightTime}</td>
 					<td>${tempFlight.flightDate}</td>
+					<td>${tempFlight.flightPrice}</td>
 					<td>${tempFlight.flightType}</td>
 					<td>
 					   <a href="${tempLink}"
