@@ -9,6 +9,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import com.dunky.flyaway.entity.Flight;
+import com.dunky.flyaway.entity.Users;
 
 public class FlightDBUtil {
 	
@@ -102,7 +103,7 @@ public List<Flight> searchFlights(String theSearchName)  throws Exception {
     }
   }
 
-public void addAdminUser(Student theStudent) throws Exception {
+public void addAdminUser(Users theUser) throws Exception {
 
 	Connection myConn = null;
 	PreparedStatement myStmt = null;
@@ -113,15 +114,16 @@ public void addAdminUser(Student theStudent) throws Exception {
 		
 		// create sql for insert
 		String sql = "insert into admin_users "
-				   + "(first_name, last_name, email) "
-				   + "values (?, ?, ?)";
+				   + "(uname, upwd, uemail, umobile) "
+				   + "values (?, ?, ?, ?)";
 		
 		myStmt = myConn.prepareStatement(sql);
 		
 		// set the param values for the student
-		myStmt.setString(1, theStudent.getFirstName());
-		myStmt.setString(2, theStudent.getLastName());
-		myStmt.setString(3, theStudent.getEmail());
+		myStmt.setString(1, theUser.getUname());
+		myStmt.setString(2, theUser.getUpwd());
+		myStmt.setString(3, theUser.getUemail());
+		myStmt.setString(4, theUser.getUmobile());
 		
 		// execute sql insert
 		myStmt.execute();

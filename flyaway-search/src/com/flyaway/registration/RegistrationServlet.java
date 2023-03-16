@@ -1,7 +1,6 @@
 package com.flyaway.registration;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import com.dunky.flyaway.dao.FlightDBUtil;
+import com.dunky.flyaway.entity.Users;
 
 
 /**
@@ -45,18 +45,33 @@ public class RegistrationServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		PrintWriter out = response.getWriter();
-		
+		try {
+			addAdminUser(request, response);
+		} catch (Exception exc) {
+			
+			 throw new ServletException(exc);
+		}
+	 
+	}
+	
+	// Method to add admin user to the database.
+	private void addAdminUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		// read student info from form data
 		String uname = request.getParameter("name");
 		String uemail = request.getParameter("email");
 		String upwd = request.getParameter("pass");
-		String umobile = request.getParameter("contact");
+		String umobile = request.getParameter("contact");	
 		
-		out.print(uname);
-		out.print(uemail);
-		out.print(upwd);
-		out.print(umobile);
+		// create a new admin object
+		Users theUser = new Users(uname, uemail, upwd, umobile);
 		
+		// add the admin to the database
+		flightDbUtil.addAdminUser(theUser);
+				
+		// send back to main page (the admin list)
+		// SEND AS REDIRECT to avoid multiple-browser reload issue
+        response.sendRedirect(request.getContextPath() + "/login.jsp");
 	}
 
 }

@@ -34,9 +34,8 @@ public class Users {
 
     }
 
-	public Users(int id, String uname, String upwd, String uemail, String umobile) {
+	public Users(String uname, String upwd, String uemail, String umobile) {
 		super();
-		this.id = id;
 		this.uname = uname;
 		this.upwd = upwd;
 		this.uemail = uemail;

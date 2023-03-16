@@ -28,7 +28,8 @@ if(session.getAttribute("name")==null){
 	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
 	rel="stylesheet" type="text/css" />
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="css/index-styles.css" rel="stylesheet" />
+
+<link type="text/css" rel="stylesheet" href="css/index-styles.css">
 </head>
 <body id="page-top">
 	<!-- Navigation-->
