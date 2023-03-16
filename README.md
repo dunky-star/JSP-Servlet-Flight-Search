@@ -3,7 +3,7 @@ Boot camp - (assignment for Phase-2): Become a back-end expert.
 
 Develop and implement a web app for FlyAway Flight Reservation Co., Ltd. to:-
 
-1.) Search form (From, To, Date, Type).
+1.) A search form in the homepage to allow entry of travel details, like the date of travel, source, destination.
 2.) Display them an error page. // If the From, to, data is incorrect.
 3.) List of Flights - Success Result.
 4.) Allow the user to select the flight and enter the passenger details.
