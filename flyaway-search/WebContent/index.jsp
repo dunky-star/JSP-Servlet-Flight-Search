@@ -63,7 +63,7 @@ if(session.getAttribute("name")==null){
 	<header class="masthead bg-primary text-white text-center">
 		<div class="container d-flex align-items-center flex-column">
 			<!-- Masthead Avatar Image-->
-			<img class="masthead-avatar mb-5" src="assets/img/avataaars.svg"
+			<img class="masthead-avatar mb-5" src="assets/img/home-image.png"
 				alt="..." />
 			<!-- Masthead Heading-->
 			<h1 class="masthead-heading text-uppercase mb-0">Welcome To Flyaway Booking</h1>
