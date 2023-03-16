@@ -87,6 +87,7 @@ public class FlightPassController extends HttpServlet {
 			case "SEARCH":
                 searchFlights(request, response);
                 break;
+                
 								
 			default:
 				listFlights(request, response);
@@ -184,28 +185,6 @@ public class FlightPassController extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/list-flights.jsp");
 			dispatcher.forward(request, response);
 		}
-		
-		
-	// Method to enter and save booking details for a customer.
-		private void savePassengers(HttpServletRequest request, HttpServletResponse response) 
-				throws Exception {
-
-				// read flight id from form data
-				// String theFlightId = request.getParameter("flightId");
-				int idFlight = Integer.parseInt(request.getParameter("flightId"));
-				
-				// get flight from database (db util)
-				Flight theFlight = flightDao.getFlight(idFlight);
-				
-				// place flight in the request attribute
-				request.setAttribute("THE_FLIGHT", theFlight);
-				
-				// send to jsp page: booking-flight-form.jsp.jsp
-				RequestDispatcher dispatcher = 
-						request.getRequestDispatcher("/booking-confirmed-form.jsp");
-				dispatcher.forward(request, response);		
-		}
-		
 
 		
 	
@@ -214,26 +193,8 @@ public class FlightPassController extends HttpServlet {
 	 */
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	        try {
-	            // read the "command" parameter
-	            String theCommand = request.getParameter("command");
-	                    
-	            // route to the appropriate method
-	            switch (theCommand) {
-	                            
-	            case "SAVE":
-					savePassengers(request, response);
-					break;
-	                                
-	            default:
-	            	listFlights(request, response);
-	            }
-	                
+	      
 	        }
-	        catch (Exception exc) {
-	            throw new ServletException(exc);
-	        }
-	        
-	    }
+
 
 }
