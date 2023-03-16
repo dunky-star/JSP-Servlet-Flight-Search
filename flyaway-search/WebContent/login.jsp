@@ -86,7 +86,7 @@
 	
 	<script type="text/javascript">
 	  var status = document.getElementById("status").value;
-	  if("status" == "fialed"){
+	  if("status" == "failed"){
 		  swal("Sorry!", "Incorrect username or password", "error");
 	  }
 	  if("status" == "invalidEmail"){
