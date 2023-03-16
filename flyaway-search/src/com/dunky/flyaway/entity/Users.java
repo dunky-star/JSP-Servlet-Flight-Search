@@ -33,6 +33,13 @@ public class Users {
 	public Users() {
 
     }
+	
+	
+	public Users(String uemail, String upwd) {
+		this.uemail = uemail;
+		this.upwd = upwd;
+	
+	}
 
 	public Users(String uname, String upwd, String uemail, String umobile) {
 		super();

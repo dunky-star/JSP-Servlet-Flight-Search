@@ -59,7 +59,8 @@ public List<Flight> searchFlights(String theSearchName)  throws Exception {
         //
         if (theSearchName != null && theSearchName.trim().length() > 0) {
             // create sql to search for students by name
-            String sql = "select * from flight where lower(flight_from) like ? or lower(flight_to) like ?";
+            String sql = "select * from flight where lower(flight_from) like ? or lower(flight_to) like ? "
+            		+ "or lower(flight_type) like ? or lower(flight_date) like ?";
             // create prepared statement
             myStmt = myConn.prepareStatement(sql);
             // set params
@@ -134,6 +135,57 @@ public void addAdminUser(Users theUser) throws Exception {
 		close(myConn, myStmt, null);
 	}
 }
+
+
+
+public Users adminUserLogin(String uemail, String upwd) throws Exception {
+
+	Users theUser = null;
+	
+	Connection myConn = null;
+	PreparedStatement myStmt = null;
+	ResultSet myRs = null;
+
+	
+	try {
+				
+		// get connection to database
+		myConn = dataSource.getConnection();
+		
+		// create sql to get selected student
+		String sql = "select * from admin_users where uemail=? and upwd=?";
+		
+		// create prepared statement
+		myStmt = myConn.prepareStatement(sql);
+		
+		// set params
+		myStmt.setString(1, uemail);
+		myStmt.setString(2, upwd);
+		
+		// execute statement
+		myRs = myStmt.executeQuery();
+		
+		// retrieve data from result set row
+		if (myRs.next()) {
+			 uemail = myRs.getString("uemail");
+			 upwd = myRs.getString("upwd");
+			
+		
+			// use the studentId during construction
+			theUser = new Users(uemail, upwd);
+		}
+		else {
+			throw new Exception("Could not find user with email: " + uemail);
+		}				
+		
+		return theUser;
+	}
+	finally {
+		// clean up JDBC objects
+		close(myConn, myStmt, myRs);
+	}
+}
+
 
 
 
