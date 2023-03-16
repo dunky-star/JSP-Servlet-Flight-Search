@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dunky.flyaway.dao.FlightDBUtil;
 import com.dunky.flyaway.dao.FlightDao;
@@ -109,6 +110,7 @@ public class FlightPassController extends HttpServlet {
 			String lastName = request.getParameter("lastName");
 			String gender = request.getParameter("gender");
 			String seatNumber = request.getParameter("seatNumber");
+			HttpSession session = request.getSession();
 			
 			// Create a passenger flight ticket.
 			FlightTicket ticket1 = new FlightTicket();
@@ -123,6 +125,7 @@ public class FlightPassController extends HttpServlet {
 			// perform update on database
 			passengersDao.savePassengers(thePassengers);
 						
+			session.setAttribute("ticket", "ticket1" );
 			// send them back to the "ticket printing page" page
 			RequestDispatcher dispatcher = 
 					request.getRequestDispatcher("/confirm-ticket.jsp");

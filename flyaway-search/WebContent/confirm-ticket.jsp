@@ -23,6 +23,8 @@ if(session.getAttribute("name")==null){
 
 <body>
 
+<input type="hidden" id="status" value="<% request.getAttribute("ticket"); %>">
+
 <div id="wrapper">
  <div id="header">
     <h2> Issued Ticket.</h2>
@@ -31,53 +33,25 @@ if(session.getAttribute("name")==null){
 
 <div id="container">
 	<div id="content">
+	
 			
-		<!--  add a search box -->
-		<form action="FlightPassController" method="GET">
-		
-			
-            
-        </form>	   
-            
-	   <table>
-			<tr>
-				<th> From </th>
-				<th> To </th>
-				<th> Seat </th>
-				<th> Flight time </th>
-				<th> Flight date </th>
-				<th> Flight Price </th>
-				<th> Flight type </th>
-				<th> Book Flight </th>
-			</tr>
-			
-			<c:forEach var="tempTicket" items = "${TICKET_LIST}">
-			
-			   <!-- set up a link for each flight -->
-				<c:url var="tempLink" value="FlightPassController">
-					<c:param name="command" value="LOAD" />
-					<c:param name="flightId" value="${tempFlight.id}" />
-				</c:url>
-					
-				<tr>
-					<td>${tempFlight.from}</td>
-					<td>${tempFlight.to}</td>
-					<td>${tempFlight.seat}</td>
-					<td>${tempFlight.flightTime}</td>
-					<td>${tempFlight.flightDate}</td>
-					<td>${tempFlight.flightPrice}</td>
-					<td>${tempFlight.flightType}</td>
-				
-				</tr>
-			</c:forEach>
-			
-		</table>
 	</div>
 </div>
 
 <p>
 	<a href="http://localhost:8080/flyaway-search/index.jsp"><b>Back</b></a>
 </p>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<link rel="stylesheet" href="alert/dist/sweetalert.css">
+	
+	<script type="text/javascript">
+	  var status = document.getElementById("ticket").value;
+	  if("ticket" == "ticket1"){
+		  swal("Ticket", "is", "ticket");
+	  }
+	  
+	</script>
 
 </body>
 </html>
