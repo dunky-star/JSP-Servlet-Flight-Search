@@ -47,6 +47,19 @@ public class Login extends HttpServlet {
 			HttpSession session = request.getSession();
 			RequestDispatcher dispatcher = null;
 			
+			// Server side validation
+			if(uemail == null || uemail == ("")) {
+				session.setAttribute("status", "invalidEmail");
+				dispatcher = request.getRequestDispatcher("login.jsp");
+				dispatcher.forward(request, response);
+			}
+			
+			if(upwd == null || upwd == ("")) {
+				session.setAttribute("status", "invalidUpwd");
+				dispatcher = request.getRequestDispatcher("login.jsp");
+				dispatcher.forward(request, response);
+			}
+			
 			Connection myConn = null;
 			PreparedStatement myStmt = null;
 			ResultSet myRs = null;
