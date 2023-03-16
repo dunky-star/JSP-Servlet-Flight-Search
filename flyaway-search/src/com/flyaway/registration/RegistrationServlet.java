@@ -59,12 +59,12 @@ public class RegistrationServlet extends HttpServlet {
 
 		// read student info from form data
 		String uname = request.getParameter("name");
-		String uemail = request.getParameter("email");
 		String upwd = request.getParameter("pass");
+		String uemail = request.getParameter("email");
 		String umobile = request.getParameter("contact");	
 		
 		// create a new admin object
-		Users theUser = new Users(uname, uemail, upwd, umobile);
+		Users theUser = new Users(uname, upwd, uemail, umobile);
 		
 		// add the admin to the database
 		flightDbUtil.addAdminUser(theUser);

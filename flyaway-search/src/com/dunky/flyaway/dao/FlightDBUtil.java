@@ -103,6 +103,7 @@ public List<Flight> searchFlights(String theSearchName)  throws Exception {
     }
   }
 
+
 public void addAdminUser(Users theUser) throws Exception {
 
 	Connection myConn = null;
