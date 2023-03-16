@@ -47,12 +47,11 @@ public class Passengers {
 
     }
 	
-	public Passengers(String firstName, String lastName, String gender,Flight flight, String seatNumber, FlightTicket flightTicket) {
+	public Passengers(String firstName, String lastName, String gender, String seatNumber, FlightTicket flightTicket) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender = gender;
 		this.seatNumber = seatNumber;
-		this.flight = flight;
 		this.flightTicket = flightTicket;
 	}
 
