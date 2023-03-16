@@ -82,7 +82,7 @@ if(session.getAttribute("name")==null){
 </div>
 
 <p>
-	<a href="http://localhost:8080/flyaway-search/index.jsp">Back</a>
+	<a href="http://localhost:8080/flyaway-search/index.jsp"><b>Back</b></a>
 </p>
 
 </body>
