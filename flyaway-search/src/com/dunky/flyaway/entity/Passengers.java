@@ -52,6 +52,7 @@ public class Passengers {
 		this.lastName = lastName;
 		this.gender = gender;
 		this.seatNumber = seatNumber;
+		this.flight = flight;
 		this.flightTicket = flightTicket;
 	}
 

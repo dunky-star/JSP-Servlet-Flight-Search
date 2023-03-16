@@ -114,7 +114,6 @@ public class FlightPassController extends HttpServlet {
 			ticket1.getFlight_ticket();
 			
 			Flight flight = new Flight();
-			int flight1 = flight.getId();
 						
 			// create a new passenger object and assigns ticket1 to it.
 			Passengers thePassengers = new Passengers(firstName, lastName, gender, flight, seatNumber, ticket1);
