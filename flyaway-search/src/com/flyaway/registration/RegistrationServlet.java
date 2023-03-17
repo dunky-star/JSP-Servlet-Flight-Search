@@ -63,6 +63,7 @@ public class RegistrationServlet extends HttpServlet {
 		// read student info from form data
 		String uname = request.getParameter("name");
 		String upwd = request.getParameter("pass");
+		String reUpwd = request.getParameter("re_pass");
 		String uemail = request.getParameter("email");
 		String umobile = request.getParameter("contact");	
 		
@@ -83,14 +84,20 @@ public class RegistrationServlet extends HttpServlet {
 			request.setAttribute("status", "invalidUpwd");
 			dispatcher = request.getRequestDispatcher("login.jsp");
 			dispatcher.forward(request, response);
+			
+		} else if(!upwd.equals(reUpwd)) {
+			request.setAttribute("status", "invalidConfirmUpwd");
+			dispatcher = request.getRequestDispatcher("login.jsp");
+			dispatcher.forward(request, response);
 		}
 		
 		if(umobile == null || umobile == ("")) {
 			request.setAttribute("status", "invalidMobile");
 			dispatcher = request.getRequestDispatcher("login.jsp");
 			dispatcher.forward(request, response);
+			
 		} else if(umobile.length() > 10) {
-			request.setAttribute("status", "invalidMobile");
+			request.setAttribute("status", "invalidMobileLength");
 			dispatcher = request.getRequestDispatcher("login.jsp");
 			dispatcher.forward(request, response);
 		}
