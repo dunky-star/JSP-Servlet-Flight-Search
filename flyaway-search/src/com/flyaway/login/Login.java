@@ -49,13 +49,13 @@ public class Login extends HttpServlet {
 			
 			// Server side validation
 			if(uemail == null || uemail == ("")) {
-				session.setAttribute("status", "invalidEmail");
+				request.setAttribute("status", "invalidEmail");
 				dispatcher = request.getRequestDispatcher("login.jsp");
 				dispatcher.forward(request, response);
 			}
 			
 			if(upwd == null || upwd == ("")) {
-				session.setAttribute("status", "invalidUpwd");
+				request.setAttribute("status", "invalidUpwd");
 				dispatcher = request.getRequestDispatcher("login.jsp");
 				dispatcher.forward(request, response);
 			}
