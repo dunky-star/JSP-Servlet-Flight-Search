@@ -17,8 +17,8 @@ if(session.getAttribute("name")==null){
 <meta charset="ISO-8859-1">
 <title>Booking the flight ticket.</title>
 <link type="text/css" rel="stylesheet" href="css/style.css">
-	<link type="text/css" rel="stylesheet" href="css/search-Flight-style.css">	
-	<script type="text/javascript" src="js/flight-passengers-validation.js"></script>	
+<link type="text/css" rel="stylesheet" href="css/search-Flight-style.css">	
+<script type="text/javascript" src="js/flight-passengers-validation.js"></script>	
 </head>
 <body>
     <div id="wrapper">
