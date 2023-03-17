@@ -3,6 +3,7 @@ package com.flyaway.registration;
 import java.io.IOException;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,12 +57,43 @@ public class RegistrationServlet extends HttpServlet {
 	
 	// Method to add admin user to the database.
 	private void addAdminUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		RequestDispatcher dispatcher = null;
 
 		// read student info from form data
 		String uname = request.getParameter("name");
 		String upwd = request.getParameter("pass");
 		String uemail = request.getParameter("email");
 		String umobile = request.getParameter("contact");	
+		
+		// Server side validation
+		if(uname == null || uname == ("")) {
+			 request.setAttribute("status", "invalidUname");
+			 dispatcher = request.getRequestDispatcher("login.jsp");
+			 dispatcher.forward(request, response);
+		}
+		
+		if(uemail == null || uemail == ("")) {
+			 request.setAttribute("status", "invalidEmail");
+			 dispatcher = request.getRequestDispatcher("login.jsp");
+			 dispatcher.forward(request, response);
+		}
+					
+		if(upwd == null || upwd == ("")) {
+			request.setAttribute("status", "invalidUpwd");
+			dispatcher = request.getRequestDispatcher("login.jsp");
+			dispatcher.forward(request, response);
+		}
+		
+		if(umobile == null || umobile == ("")) {
+			request.setAttribute("status", "invalidMobile");
+			dispatcher = request.getRequestDispatcher("login.jsp");
+			dispatcher.forward(request, response);
+		} else if(umobile.length() > 10) {
+			request.setAttribute("status", "invalidMobile");
+			dispatcher = request.getRequestDispatcher("login.jsp");
+			dispatcher.forward(request, response);
+		}
 		
 		// create a new admin object
 		Users theUser = new Users(uname, upwd, uemail, umobile);
