@@ -94,6 +94,19 @@
 	  if("status" == "invalidUpwd"){
 		  swal("Sorry!", "Please enter password", "error");
 	  }
+	  if("status" == "invalidConfirmUpwd"){
+		  swal("Sorry!", "Password do not match", "error");
+	  }
+	  if("status" == "invalidEmail"){
+		  swal("Sorry!", "Please enter email", "error");
+	  }
+	  if("status" == "invalidMobile"){
+		  swal("Sorry!", "Please enter mobile", "error");
+	  }
+	  if("status" == "invalidMobileLength"){
+		  swal("Sorry!", "Mobile number should not be more than 10 digits", "error");
+	  }
+	
 	</script>
 	
 

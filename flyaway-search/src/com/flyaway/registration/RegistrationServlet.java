@@ -76,29 +76,29 @@ public class RegistrationServlet extends HttpServlet {
 		
 		if(uemail == null || uemail == ("")) {
 			 request.setAttribute("status", "invalidEmail");
-			 dispatcher = request.getRequestDispatcher("login.jsp");
+			 dispatcher = request.getRequestDispatcher("registration.jsp");
 			 dispatcher.forward(request, response);
 		}
 					
 		if(upwd == null || upwd == ("")) {
 			request.setAttribute("status", "invalidUpwd");
-			dispatcher = request.getRequestDispatcher("login.jsp");
+			dispatcher = request.getRequestDispatcher("registration.jsp");
 			dispatcher.forward(request, response);
 			
 		} else if(!upwd.equals(reUpwd)) {
 			request.setAttribute("status", "invalidConfirmUpwd");
-			dispatcher = request.getRequestDispatcher("login.jsp");
+			dispatcher = request.getRequestDispatcher("registration.jsp");
 			dispatcher.forward(request, response);
 		}
 		
 		if(umobile == null || umobile == ("")) {
 			request.setAttribute("status", "invalidMobile");
-			dispatcher = request.getRequestDispatcher("login.jsp");
+			dispatcher = request.getRequestDispatcher("registration.jsp");
 			dispatcher.forward(request, response);
 			
 		} else if(umobile.length() > 10) {
 			request.setAttribute("status", "invalidMobileLength");
-			dispatcher = request.getRequestDispatcher("login.jsp");
+			dispatcher = request.getRequestDispatcher("registration.jsp");
 			dispatcher.forward(request, response);
 		}
 		
